@@ -1,4 +1,7 @@
 /* miniprogram/pages/index/index.wxss */
+.hidden{
+  display: none;
+}
 .subnav{
   display: flex;
   height:90rpx;
@@ -31,19 +34,37 @@ border-right-color: transparent;
 }
 
 .subnav .title{
-  width:40%;
+  width:50%;
   display: flex;
   justify-content: space-around;
   font-weight: bold;
 }
 
+.subnav .title .onShow{
+  text-align: center;
+  width:150rpx;
+}
+.subnav .title .willShow{
+  text-align: center;
+  width:160rpx;
+}
+
 .subnav .onShow.select{
-  color:#e54847
+  color:#e54847;
+  border-bottom:5rpx solid #e54847;
 }
 .subnav .willShow.select{
-  color:#e54847
+  color:#e54847;
+  border-bottom:5rpx solid #e54847;
 }
 
 .subnav .search{
   width:15%;
+}
+.subnav .search image{
+  height:40rpx;
+  width:40rpx;
+  position:relative;
+  top:10rpx;
+  left:50rpx;
 }

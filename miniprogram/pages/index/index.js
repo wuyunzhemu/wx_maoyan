@@ -8,9 +8,12 @@ const app = getApp()
 
 Page({
   data: {
+    finishedLocal:false,
     avatarUrl: './user-unlogin.png',
     userInfo: {},
-    city:[]
+    city:[],
+    onShow_selected:true,
+    isOnShow:true
   },
 
   onLoad: function() {
@@ -60,13 +63,23 @@ Page({
             let district = res.result.ad_info.district
             this.setData({
               province: province,
-              city: city
+              city: city,
+              finishedLocal:true
             })
             console.log(this.data)
           }
         })
       }
     })
+  },
+  changeSelect(e){
+    if (!this.data.onShow_selected == e.currentTarget.dataset.onshow){
+      const change = !this.data.onShow_selected
+      this.setData({
+        onShow_selected: change
+      })
+    }
+
   }
 })
 

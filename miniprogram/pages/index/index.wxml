@@ -1,13 +1,22 @@
 <view class="container">
   <view class="subnav">
     <view class="location" bindtap="">
-      <span class="local">{{city}}</span>
+      <span class="local">
+      <span class="{{finishedLocal?'hidden':''}}">正在定位</span>
+        {{city}}
+      </span>
       <i class="down-arrow"></i>
     </view>
     <view class="title">
-      <view class="onShow{{onShow_select?'select':''}}">正在热映</view>
-      <view class="willShow{{onShow_select?'':'select'}}">即将上映</view>
+      <view class="onShow {{onShow_selected?'select':''}}" bindtap='changeSelect' data-onshow="{{isOnShow}}">正在热映</view>
+      <view class="willShow {{onShow_selected?'':'select'}}" bindtap='changeSelect' data-onshow="{{!isOnShow}}">即将上映</view>
     </view>
-    <view class="search" bandtap=""><i ></i></view>
+    <view class="search" bandtap=""><image src="../../images/icon-search.png"></image></view>
+  </view>
+  <view class="onShow_body {{onShow_selected?'':'hidden'}}">
+  这里是正在热映
+  </view>
+  <view class="willShow_body {{onShow_selected?'hidden':''}}">
+  这里是即将上映
   </view>
 </view>

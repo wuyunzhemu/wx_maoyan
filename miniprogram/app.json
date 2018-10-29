@@ -13,12 +13,14 @@
     "enablePullDownRefresh": true
   },
   "tabBar": {
+    "selectedColor": "#e54847",
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "电影",
         "iconPath": "images/icon-film.png",
         "selectedIconPath": "images/icon-film_selected.png"
+       
       },
       {
         "pagePath": "pages/cinema/cinema",
