@@ -4,19 +4,18 @@
     "pages/index/index",
     "pages/cinema/cinema",
     "pages/mine/mine"
-
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#e54847",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "list": [
       {
-        "pagePath":"pages/index/index",
+        "pagePath": "pages/index/index",
         "text": "电影",
         "iconPath": "images/icon-film.png",
         "selectedIconPath": "images/icon-film_selected.png"
@@ -33,7 +32,6 @@
         "iconPath": "images/icon-mine.png",
         "selectedIconPath": "images/icon-mine_selected.png"
       }
-
     ]
   }
 }

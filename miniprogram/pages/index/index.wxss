@@ -1,1 +1,49 @@
 /* miniprogram/pages/index/index.wxss */
+.subnav{
+  display: flex;
+  height:90rpx;
+  width:750rpx;
+  border-bottom: 1px solid #f0f0f0;
+  line-height: 90rpx;
+  font-size:30rpx;
+  justify-content: space-between;
+  color:#666666;
+}
+
+.subnav .location{
+  width:25%;
+  text-align: center;
+}
+
+.subnav .down-arrow{
+position:relative;
+bottom: 5rpx;
+left:10rpx;
+font-size: 0;
+line-height: 0;
+border-width: 5px;
+border-color:#aaa;
+border-bottom-width: 0;
+border-style: dashed;
+border-top-style: solid;
+border-left-color: transparent;
+border-right-color: transparent;
+}
+
+.subnav .title{
+  width:40%;
+  display: flex;
+  justify-content: space-around;
+  font-weight: bold;
+}
+
+.subnav .onShow.select{
+  color:#e54847
+}
+.subnav .willShow.select{
+  color:#e54847
+}
+
+.subnav .search{
+  width:15%;
+}

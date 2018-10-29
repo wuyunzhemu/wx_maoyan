@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="subnav">
+    <view class="location" bindtap="">
+      <span class="local">{{city}}</span>
+      <i class="down-arrow"></i>
+    </view>
+    <view class="title">
+      <view class="onShow{{onShow_select?'select':''}}">正在热映</view>
+      <view class="willShow{{onShow_select?'':'select'}}">即将上映</view>
+    </view>
+    <view class="search" bandtap=""><i ></i></view>
+  </view>
+</view>

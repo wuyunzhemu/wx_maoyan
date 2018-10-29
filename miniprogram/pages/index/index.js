@@ -1,23 +1,19 @@
 //index.js
+const QQMapWX = require('../../libs//qqmap-wx-jssdk.js');
+const qqmap = new QQMapWX({
+  key: '4LJBZ-CQI6U-ZBZVR-BJZ2Y-IX3OQ-LUBZG'
+})
+// 调用接口
 const app = getApp()
 
 Page({
   data: {
     avatarUrl: './user-unlogin.png',
     userInfo: {},
-    logged: false,
-    takeSession: false,
-    requestResult: ''
+    city:[]
   },
 
   onLoad: function() {
-    if (!wx.cloud) {
-      wx.redirectTo({
-        url: '../chooseLib/chooseLib',
-      })
-      return
-    }
-
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -31,19 +27,46 @@ Page({
               })
             }
           })
+        }else{   
+        }
+        if(res.authSetting['scope.userLocation']){
+        this.getCity();
+        }
+        else{
+          wx.authorize({ scope: "scope.userLocation"})
         }
       }
     })
   },
-
-  onGetUserInfo: function(e) {
-    if (!this.logged && e.detail.userInfo) {
-      this.setData({
-        logged: true,
-        avatarUrl: e.detail.userInfo.avatarUrl,
-        userInfo: e.detail.userInfo
-      })
-    }
+  onShow: function () {
+    qqmap.search({
+      keyword: '电影院',
+      success:res=>{
+        console.log(res);
+      }
+    });    
   },
-
+  getCity:function(){
+    wx.getLocation({
+      success: res => {
+        qqmap.reverseGeocoder({
+          location: {
+            latitude: res.latitude,
+            longitude: res.longitude
+          },
+          success:res=>{
+            let province = res.result.ad_info.province
+            let city = res.result.ad_info.city
+            let district = res.result.ad_info.district
+            this.setData({
+              province: province,
+              city: city
+            })
+            console.log(this.data)
+          }
+        })
+      }
+    })
+  }
 })
+
