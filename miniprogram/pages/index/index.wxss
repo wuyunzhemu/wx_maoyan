@@ -4,18 +4,19 @@
 }
 .subnav{
   display: flex;
-  height:90rpx;
+  height:80rpx;
   width:750rpx;
   border-bottom: 1px solid #f0f0f0;
   line-height: 90rpx;
-  font-size:30rpx;
+  font-size:28rpx;
   justify-content: space-between;
   color:#666666;
 }
 
 .subnav .location{
-  width:25%;
+  width:20%;
   text-align: center;
+  font-size:24rpx;
 }
 
 .subnav .down-arrow{
@@ -24,7 +25,7 @@ bottom: 5rpx;
 left:10rpx;
 font-size: 0;
 line-height: 0;
-border-width: 5px;
+border-width: 10rpx;
 border-color:#aaa;
 border-bottom-width: 0;
 border-style: dashed;
@@ -34,7 +35,7 @@ border-right-color: transparent;
 }
 
 .subnav .title{
-  width:50%;
+  width:40%;
   display: flex;
   justify-content: space-around;
   font-weight: bold;
@@ -42,11 +43,11 @@ border-right-color: transparent;
 
 .subnav .title .onShow{
   text-align: center;
-  width:150rpx;
+  width:80rpx;
 }
 .subnav .title .willShow{
   text-align: center;
-  width:160rpx;
+  width:80rpx;
 }
 
 .subnav .onShow.select{
@@ -59,12 +60,50 @@ border-right-color: transparent;
 }
 
 .subnav .search{
-  width:15%;
+  width:10%;
+  border-left: 1px solid #f0f0f0
 }
 .subnav .search image{
   height:40rpx;
   width:40rpx;
   position:relative;
   top:10rpx;
-  left:50rpx;
+  left:20rpx;
+}
+
+.filmInfo span{
+  display: block;
+  color:grey;
+  margin-top:12rpx;
+  font-size: 24rpx;
+  width:400rpx;
+}
+.filmInfo span.showInfo{
+  color:#a7a7a7;
+}
+
+.page_body .van-card{
+  margin:10rpx 15rpx 0rpx 15rpx;
+  padding-right: 0;
+  padding-left:180rpx;
+  border-bottom: 1px solid #f6f6f6;
+  height:220rpx;
+  background: white;
+}
+
+.van-card__title{
+  font-size:30rpx;
+}
+
+.filmRateNum{
+  position: relative;
+  bottom:160rpx;
+  left:15rpx;
+  color:#ffc436;
+  font-size: 30rpx;
+ 
+}
+
+.filmRateNum .words{
+  font-size:20rpx;
 }

@@ -1,4 +1,5 @@
 /**app.wxss**/
+@import "vant-weapp/common/index.wxss";
 .container {
 
   box-sizing: border-box;

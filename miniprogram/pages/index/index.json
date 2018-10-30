@@ -3,6 +3,7 @@
   "navigationBarTitleText": "猫眼电影",
   "usingComponents":{
     "van-row":"../../vant-weapp/row/index",
-    "van-col":"../../vant-weapp/col/index"
+    "van-col":"../../vant-weapp/col/index",
+    "van-card":"../../vant-weapp/card/index"
   }
 }

@@ -3,6 +3,8 @@ const QQMapWX = require('../../libs//qqmap-wx-jssdk.js');
 const qqmap = new QQMapWX({
   key: '4LJBZ-CQI6U-ZBZVR-BJZ2Y-IX3OQ-LUBZG'
 })
+const db = wx.cloud.database();
+const onShowFilms = db.collection('onShowFilms')
 // 调用接口
 const app = getApp()
 
@@ -13,7 +15,8 @@ Page({
     userInfo: {},
     city:[],
     onShow_selected:true,
-    isOnShow:true
+    isOnShow:true,
+    hot:[]
   },
 
   onLoad: function() {
@@ -42,12 +45,23 @@ Page({
     })
   },
   onShow: function () {
-    qqmap.search({
-      keyword: '电影院',
+    wx.request({
+      url: 'https://wx.maoyan.com/mmdb/movie/v2/list/hot.json',
+      method:'GET',
+      header:'content-type:application/json;charset=UTF-8',
+      data:{
+        offset:0,
+        limit:12,
+        ct:this.data.city
+      },
       success:res=>{
-        console.log(res);
+        console.log(res.data.data.hot)
+        this.setData({
+          hot:res.data.data.hot
+        })
       }
-    });    
+    })
+    
   },
   getCity:function(){
     wx.getLocation({

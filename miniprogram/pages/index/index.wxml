@@ -8,15 +8,38 @@
       <i class="down-arrow"></i>
     </view>
     <view class="title">
-      <view class="onShow {{onShow_selected?'select':''}}" bindtap='changeSelect' data-onshow="{{isOnShow}}">正在热映</view>
-      <view class="willShow {{onShow_selected?'':'select'}}" bindtap='changeSelect' data-onshow="{{!isOnShow}}">即将上映</view>
+      <view class="onShow {{onShow_selected?'select':''}}" bindtap='changeSelect' data-onshow="{{isOnShow}}">热映</view>
+      <view class="willShow {{onShow_selected?'':'select'}}" bindtap='changeSelect' data-onshow="{{!isOnShow}}">待映</view>
     </view>
     <view class="search" bandtap=""><image src="../../images/icon-search.png"></image></view>
   </view>
-  <view class="onShow_body {{onShow_selected?'':'hidden'}}">
-  这里是正在热映
-  </view>
-  <view class="willShow_body {{onShow_selected?'hidden':''}}">
-  这里是即将上映
+  <view class="page_body">
+    <scroll-view class="onShow_body {{onShow_selected?'':'hidden'}}">
+      <block wx:for="{{hot}}" wx-key="{{item.id}}">
+        <van-card
+        title="{{item.nm}}"
+        thumb="{{item.img}}"
+        >
+          <view slot="footer" class="filmRateNum" >
+            <view class="{{item.mk==0?'hidden':''}}">
+              <span>{{item.mk}}</span>
+              <span class="words">分</span>
+            </view>
+            <view class="{{item.mk==0?'':'hidden'}}">
+            <span>{{item.wish}}</span>
+              <span class="words">人想看</span>
+            </view>
+          </view>
+          <view slot="desc" class="filmInfo">
+            <span class="van-ellipsis">{{item.cat}}</span>
+            <span class="van-ellipsis">{{item.desc}}</span>
+            <span class="van-ellipsis showInfo">{{item.showInfo}}</span>
+          </view>
+        </van-card>
+      </block>
+    </scroll-view>
+    <view class="willShow_body {{onShow_selected?'hidden':''}}">
+    这里是即将上映
+    </view>
   </view>
 </view>
