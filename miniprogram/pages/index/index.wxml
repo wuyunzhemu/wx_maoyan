@@ -22,13 +22,13 @@
         thumb="{{item.img}}"
         thumb-mode="widthFix"
         bindtap="intofilmInfo"
+        data-id="{{item.id}}"
         >
           <view slot="footer" class="filmRateNum" >
             <view class="{{item.pubDate>nowTime?'hidden':''}}">
               <span>{{item.mk===0?'暂无评':item.mk}}</span>
               <span class="words">分</span>
-            </view>
-            <view class="{{item.pubDate>nowTime?'':'hidden'}}">
+            </view>            <view class="{{item.pubDate>nowTime?'':'hidden'}}">
             <span>{{item.wish}}</span>
               <span class="words">人想看</span>
             </view>

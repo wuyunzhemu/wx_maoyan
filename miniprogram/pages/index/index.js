@@ -20,7 +20,7 @@ Page({
     onShow_finishLoad:false,    //是否加载完成
     listSize:12,    //单页电影数
     lastHotListSize:0,
-    hasHotDataMore:true, //是否还有数据
+    hasHotDataMore:false, //是否还有数据
     nowTime:new Date().getTime()
   },
 
@@ -28,18 +28,6 @@ Page({
     // 获取用户信息
     wx.getSetting({
       success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              this.setData({
-                avatarUrl: res.userInfo.avatarUrl,
-                userInfo: res.userInfo
-              })
-            }
-          })
-        }else{   
-        }
         if(res.authSetting['scope.userLocation']){
           this.getCity();
         }
@@ -51,15 +39,14 @@ Page({
     })
   },
   onShow: function () {
-    
+
   },
   onReady:function(){
-    this.setData({
-      onShow_finishLoad: true
-    })
+
   },
 
-  getOnShowFilmInfo:function(){
+  getOnShowFilmInfo:function(){    
+    //获取热映影片基础信息
     wx.request({
       url: 'https://wx.maoyan.com/mmdb/movie/v2/list/hot.json',
       method: 'GET',
@@ -70,7 +57,7 @@ Page({
         ct: this.data.city
       },
       success: res => {
-        if(this.data.lastHotListSize === res.data.data.hot.length){
+        if(this.data.lastHotListSize === res.data.data.hot.length){  //判断请求是否还返回数据
           this.setData({
             hasHotDataMore:false
           })
@@ -82,9 +69,11 @@ Page({
           result[i].img = result[i].img.replace('w.h/movie', 'movie')
         }
         hotList=[...hotList,...res.data.data.hot]
-        let increaseNum = result.length-this.data.hot.length;
+        let increaseNum = result.length-this.data.hot.length;   //每次请求增加多少数据
         this.setData({
-          hot: result
+          hot: result,
+          onShow_finishLoad: true,
+          hasHotDataMore: true
         })  
         this.data.lastHotListSize+=increaseNum;
       }
@@ -92,10 +81,12 @@ Page({
   },
 
   onReachBottom(){
+    //触底新增列表 
     this.getOnShowFilmInfo();
   },
 
   getCity:function(){
+    //获取城市信息
     wx.getLocation({
       success: res => {
         qqmap.reverseGeocoder({
@@ -104,6 +95,9 @@ Page({
             longitude: res.longitude
           },
           success:res=>{
+            this.setData({
+              onShow_finishLoad: true,
+            })
             let province = res.result.ad_info.province
             let city = res.result.ad_info.city
             let district = res.result.ad_info.district
@@ -112,13 +106,14 @@ Page({
               city: city,
               finishedLocal:true
             })
-            console.log(this.data)
+          
           }
         })
       }
     })
   },
   changeSelect(e){
+    //在 热映 及 待映 间切换
     if (!this.data.onShow_selected == e.currentTarget.dataset.onshow){
       const change = !this.data.onShow_selected
       this.setData({
@@ -127,11 +122,15 @@ Page({
     }
 
   },
-  scrolltolower(e){
 
-  },
   intofilmInfo(e){
-    console.log('in');
+    //跳转进入影片详细信息页面
+    wx.navigateTo({
+      url: '../hotFilmInfo/hotFilmInfo?id='+e.currentTarget.dataset.id,
+      success:res=>{
+        console.log(res)
+      }
+    })
   }
 
   

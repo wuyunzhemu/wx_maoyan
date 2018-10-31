@@ -4,7 +4,8 @@
     "pages/index/index",
     "pages/cinema/cinema",
     "pages/mine/mine",
-    "components/loading/loading"
+    "components/loading/loading",
+    "pages/hotFilmInfo/hotFilmInfo"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
