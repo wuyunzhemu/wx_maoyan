@@ -10,13 +10,18 @@ const app = getApp()
 
 Page({
   data: {
-    finishedLocal:false,
+    finishedLocal:false,    //是否完成定位
     avatarUrl: './user-unlogin.png',
     userInfo: {},
-    city:[],
-    onShow_selected:true,
-    isOnShow:true,
-    hot:[]
+    city:'',    //当前城市
+    onShow_selected:true,    //导航是否选中热映
+    isOnShow:true,     //该元素是否为热映元素
+    hot:[],        //热映电影列表
+    onShow_finishLoad:false,    //是否加载完成
+    listSize:12,    //单页电影数
+    lastHotListSize:0,
+    hasHotDataMore:true, //是否还有数据
+    nowTime:new Date().getTime()
   },
 
   onLoad: function() {
@@ -36,33 +41,60 @@ Page({
         }else{   
         }
         if(res.authSetting['scope.userLocation']){
-        this.getCity();
+          this.getCity();
         }
         else{
           wx.authorize({ scope: "scope.userLocation"})
         }
+        this.getOnShowFilmInfo();
       }
     })
   },
   onShow: function () {
-    wx.request({
-      url: 'https://wx.maoyan.com/mmdb/movie/v2/list/hot.json',
-      method:'GET',
-      header:'content-type:application/json;charset=UTF-8',
-      data:{
-        offset:0,
-        limit:12,
-        ct:this.data.city
-      },
-      success:res=>{
-        console.log(res.data.data.hot)
-        this.setData({
-          hot:res.data.data.hot
-        })
-      }
-    })
     
   },
+  onReady:function(){
+    this.setData({
+      onShow_finishLoad: true
+    })
+  },
+
+  getOnShowFilmInfo:function(){
+    wx.request({
+      url: 'https://wx.maoyan.com/mmdb/movie/v2/list/hot.json',
+      method: 'GET',
+      header: {str:'content-type:application/json;charset=UTF-8'},
+      data: {
+        offset: 0,
+        limit: this.data.hot.length+this.data.listSize,
+        ct: this.data.city
+      },
+      success: res => {
+        if(this.data.lastHotListSize === res.data.data.hot.length){
+          this.setData({
+            hasHotDataMore:false
+          })
+          return;
+        }
+        let result = res.data.data.hot;
+        let hotList = this.data.hot;  
+        for (let i = 0; i < result.length; i++) {
+          result[i].img = result[i].img.replace('w.h/movie', 'movie')
+        }
+        hotList=[...hotList,...res.data.data.hot]
+        let increaseNum = result.length-this.data.hot.length;
+        this.setData({
+          hot: result
+        })  
+        this.data.lastHotListSize+=increaseNum;
+      }
+    })
+  },
+
+  onReachBottom(){
+    this.getOnShowFilmInfo();
+  },
+
   getCity:function(){
     wx.getLocation({
       success: res => {
@@ -94,6 +126,14 @@ Page({
       })
     }
 
+  },
+  scrolltolower(e){
+
+  },
+  intofilmInfo(e){
+    console.log('in');
   }
+
+  
 })
 

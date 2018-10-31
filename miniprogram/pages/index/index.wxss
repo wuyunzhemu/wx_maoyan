@@ -2,6 +2,19 @@
 .hidden{
   display: none;
 }
+
+.data_getMore{
+  height:60rpx;
+  font-size: 26rpx;
+  text-align: center;
+  padding-top:20rpx;
+  color:#aaa;
+  background-color:#f8f8f8;
+}
+.data_getMore:active{
+  background-color:#f0f0f0;
+}
+
 .subnav{
   display: flex;
   height:80rpx;
@@ -91,8 +104,15 @@ border-right-color: transparent;
   background: white;
 }
 
-.van-card__title{
+.page_body .van-card:active{
+  background-color: #f6f6f6;
+}
+
+.page_body .van-card__title{
   font-size:30rpx;
+}
+.page_body .van-card__img{
+  width:130rpx;
 }
 
 .filmRateNum{
@@ -104,6 +124,15 @@ border-right-color: transparent;
  
 }
 
+
 .filmRateNum .words{
   font-size:20rpx;
 }
+
+.btn_buyTic{
+  position: absolute;
+  top:100rpx;
+  right:10rpx;
+  z-index:999
+}
+

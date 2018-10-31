@@ -1,0 +1,5 @@
+<!--miniprogram/components/loading/loading.wxml-->
+<view class="loading">
+  <van-loading color="#fff" size="50rpx"/>
+  <text class="loading_text">正在加载</text>
+</view>

@@ -1,0 +1,3 @@
+<view class="button btn-{{type}}">
+  <text class="normalBtn_font">{{type==='buyTic'?'购票':'预售'}}</text>
+</view>

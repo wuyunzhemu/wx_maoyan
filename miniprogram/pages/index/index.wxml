@@ -14,18 +14,21 @@
     <view class="search" bandtap=""><image src="../../images/icon-search.png"></image></view>
   </view>
   <view class="page_body">
+  <page_loading class="{{onShow_finishLoad?'hidden':''}}"></page_loading>
     <scroll-view class="onShow_body {{onShow_selected?'':'hidden'}}">
-      <block wx:for="{{hot}}" wx-key="{{item.id}}">
+      <block wx:for="{{hot}}" wx:key="{{item.id}}">
         <van-card
         title="{{item.nm}}"
         thumb="{{item.img}}"
+        thumb-mode="widthFix"
+        bindtap="intofilmInfo"
         >
           <view slot="footer" class="filmRateNum" >
-            <view class="{{item.mk==0?'hidden':''}}">
-              <span>{{item.mk}}</span>
+            <view class="{{item.pubDate>nowTime?'hidden':''}}">
+              <span>{{item.mk===0?'暂无评':item.mk}}</span>
               <span class="words">分</span>
             </view>
-            <view class="{{item.mk==0?'':'hidden'}}">
+            <view class="{{item.pubDate>nowTime?'':'hidden'}}">
             <span>{{item.wish}}</span>
               <span class="words">人想看</span>
             </view>
@@ -34,12 +37,15 @@
             <span class="van-ellipsis">{{item.cat}}</span>
             <span class="van-ellipsis">{{item.desc}}</span>
             <span class="van-ellipsis showInfo">{{item.showInfo}}</span>
+            <btn class="btn_buyTic" type="{{item.pubDate>nowTime?'preSell':'buyTic'}}"></btn>
           </view>
         </van-card>
       </block>
+      <view class="data_getMore {{hasHotDataMore?'':'hidden'}}">加载更多...</view>
     </scroll-view>
     <view class="willShow_body {{onShow_selected?'hidden':''}}">
-    这里是即将上映
+      这里是即将上映
     </view>
+    
   </view>
 </view>

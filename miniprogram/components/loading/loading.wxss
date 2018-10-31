@@ -1,0 +1,22 @@
+/* miniprogram/components/loading/loading.wxss */
+.loading{
+  display: flex;
+  width:120rpx;
+  height:120rpx;
+  background: #7d7d7d;
+  margin:50% auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  z-index:999;
+}
+.loading van-loading{
+  margin:0 auto;
+  display: block;
+}
+.loading_text{
+  text-align: center;
+  font-size: 26rpx;
+  color:white;
+}

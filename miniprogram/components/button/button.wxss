@@ -1,0 +1,23 @@
+/* components/button/button.wxss */
+.button{
+  width:90rpx;
+  height:40rpx;
+  border-radius: 5rpx;
+  text-align: center;
+  padding-top:10rpx;
+  color:white;
+}
+
+.btn-buyTic{
+
+  background-color: #e54847;
+  
+}
+
+.btn-preSell{
+  background-color: #52b0eb;
+}
+
+.normalBtn_font{
+  font-size: 24rpx;
+}

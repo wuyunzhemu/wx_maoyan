@@ -4,6 +4,8 @@
   "usingComponents":{
     "van-row":"../../vant-weapp/row/index",
     "van-col":"../../vant-weapp/col/index",
-    "van-card":"../../vant-weapp/card/index"
+    "van-card":"../../vant-weapp/card/index",
+    "page_loading":"../../components/loading/loading",
+    "btn":"../../components/button/button"
   }
 }
