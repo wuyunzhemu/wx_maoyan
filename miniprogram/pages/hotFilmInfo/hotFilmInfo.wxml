@@ -1,7 +1,20 @@
 <view class="container">
-  <view class="filmInfo__header">
-    <image src="{{filmInfo.img}}"mode="widthFix"/>
+  <view class="filmInfo__header" >
+  <view class="filmInfo__header_bg">
+    <image src="{{filmInfo.img}}" mode="aspectFill" class="filmInfo__header_bgImg"/>
+  </view>
     <view class="filmInfo__header_items">
+      <image src="{{filmInfo.img}}" mode="aspectFit"/>
+       <view class="filmInfo__header_desc">
+      <text>{{filmInfo.nm}}</text>
+      <text>{{filmInfo.enm}}</text>
+      <text>{{filmInfo.wish}}人想看</text>
+      <view class="filmInfo_desc-detail">
+        <text>{{filmInfo.cat}}</text>
+        <text>{{filmInfo.fra}}/{{filmInfo.dur}}分钟</text>
+        <text>{{filmInfo.pubDesc}}</text>
+      </view>
+    </view>
     </view>
   </view>
   <view class="filmInfo__body">

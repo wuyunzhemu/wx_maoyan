@@ -14,7 +14,7 @@ Page({
   onLoad: function (options) {
     console.log(options);
     wx.request({
-      url: 'https://wx.maoyan.com/hostproxy/mmdb/movie/v5/'+options.id+'.json',
+      url: 'https://wx.maoyan.com/hostproxy/mmdb/movie/v5/42964.json',//options.id
       method: 'GET',
       header: { str: 'content-type:application/json;charset=UTF-8' },
       success:res=>{

@@ -5,32 +5,58 @@ page,.container{
 
 }
 .filmInfo__header{
-  position: relative;
+
   width:100%;
-  height:33.33333%;
-  overflow:hidden;
-  filter: blur(30rpx) brightness(70%);
-  
-  z-index: 0;
+  height:445rpx;
 }
 
-.filmInfo__header image{
-  position: absolute;
+.filmInfo__header_bg{
+  filter: blur(30rpx) brightness(70%);
+
   width: 100%;
+  height:100%;
   overflow: hidden;
-  z-index: -1;
 }
 
 .filmInfo__header_items{
+  padding-top:20rpx;
+  padding-left: 35rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   position: absolute;
-  top:0;
+  top:0rpx;
+  width: 100%;
   height:34%;
+}
+
+.filmInfo__header_bgImg{
+  height: 100%;
   width: 100%;
 }
+
+.filmInfo__header_items image{
+  border:1px solid #949194;
+  display: block;
+  width:223rpx;
+  height:75%;
+}
+
+.filmInfo__header_desc{
+  margin-left:35rpx;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.filmInfo__header_desc text{
+  display: block;
+  color:white;
+}
+
 .filmInfo__body{
   position: relative;
   width:100%;
   background-color: white;
   height:100%;
-  z-index:0;
 }
