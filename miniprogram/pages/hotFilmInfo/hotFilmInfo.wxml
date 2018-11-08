@@ -6,13 +6,13 @@
     <view class="filmInfo__header_items">
       <image src="{{filmInfo.img}}" mode="aspectFit"/>
        <view class="filmInfo__header_desc">
-      <text>{{filmInfo.nm}}</text>
-      <text>{{filmInfo.enm}}</text>
-      <text>{{filmInfo.wish}}人想看</text>
+      <text class="filmInfo_name">{{filmInfo.nm}}</text>
+      <text class="filmInfo_enm">{{filmInfo.enm}}</text>
+      <text class="filmInfo_wish">{{filmInfo.wish}}人想看</text>
       <view class="filmInfo_desc-detail">
-        <text>{{filmInfo.cat}}</text>
-        <text>{{filmInfo.fra}}/{{filmInfo.dur}}分钟</text>
-        <text>{{filmInfo.pubDesc}}</text>
+        <text class="filmInfo__desc_cat">{{filmInfo.cat}}</text>
+        <text class="filmInfo__desc_fra">{{filmInfo.fra}}/{{filmInfo.dur}}分钟</text>
+        <text class="filmInfo__desc_pub">{{filmInfo.pubDesc}}</text>
       </view>
     </view>
     </view>
