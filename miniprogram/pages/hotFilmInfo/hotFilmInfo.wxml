@@ -8,10 +8,11 @@
        <view class="filmInfo__header_desc">
       <text class="filmInfo_name">{{filmInfo.nm}}</text>
       <text class="filmInfo_enm">{{filmInfo.enm}}</text>
-      <text class="filmInfo_wish">{{filmInfo.wish}}人想看</text>
+      <text class=" {{filmInfo.comScorePersona?'hidden':'filmInfo__wish'}}">{{filmInfo.wish}}人想看</text>
+      <text class=" {{filmInfo.comScorePersona?'filmInfo__wish':'hidden'}}">{{filmInfo.sc}}分</text>
       <view class="filmInfo_desc-detail">
         <text class="filmInfo__desc_cat">{{filmInfo.cat}}</text>
-        <text class="filmInfo__desc_fra">{{filmInfo.fra}}/{{filmInfo.dur}}分钟</text>
+        <text class="filmInfo__desc_fra">{{filmInfo.src}}/{{filmInfo.dur}}分钟</text>
         <text class="filmInfo__desc_pub">{{filmInfo.pubDesc}}</text>
       </view>
     </view>

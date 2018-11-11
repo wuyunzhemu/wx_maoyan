@@ -1,10 +1,11 @@
 {
   "cloud": true,
   "pages": [
-    "pages/hotFilmInfo/hotFilmInfo",
+
     "pages/index/index",
     "pages/cinema/cinema",
     "pages/mine/mine",
+    "pages/hotFilmInfo/hotFilmInfo",
     "components/loading/loading"
 
   ],

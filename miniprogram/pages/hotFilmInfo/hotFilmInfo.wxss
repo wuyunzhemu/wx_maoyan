@@ -1,4 +1,8 @@
 /* miniprogram/pages/hotFilmInfo/hotFilmInfo.wxss */
+.hidden{
+  display: none!important;
+}
+
 page,.container{
   width: 100%;
   height:100%;
@@ -30,8 +34,8 @@ page,.container{
 }
 
 .filmInfo__header_bgImg{
-  height: 100%;
-  width: 100%;
+  height: 120%;
+  width: 120%;
 }
 
 .filmInfo__header_items image{
@@ -62,12 +66,23 @@ page,.container{
 
 .filmInfo_name
 {
-  font-size: 35rpx;
+  font-size: 40rpx;
 }
 
 .filmInfo_enm{
-  font-size: 20rpx;
+  font-size: 24rpx;
 }
 
 .filmInfo__wish{
+  color:#ffc600!important;
+  height:40rpx;
+  font-size: 36rpx;
+  margin-top:10rpx;
+  margin-bottom: 10rpx;
+}
+
+.filmInfo_desc-detail text{
+  margin-top:8rpx;
+  font-size: 30rpx;
+  color:#b8bcc0
 }
