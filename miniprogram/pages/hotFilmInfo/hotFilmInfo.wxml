@@ -1,28 +1,56 @@
 <view class="container">
   <view class="filmInfo__header" >
-  <view class="filmInfo__header_bg">
-    <image src="{{filmInfo.img}}" mode="aspectFill" class="filmInfo__header_bgImg"/>
-  </view>
+    <view class="filmInfo__header_bg">
+      <image src="{{filmInfo.img}}" mode="aspectFill" class="filmInfo__header_bgImg"/>
+    </view>
     <view class="filmInfo__header_items">
-      <image src="{{filmInfo.img}}" mode="aspectFit"/>
-       <view class="filmInfo__header_desc">
-      <text class="filmInfo_name">{{filmInfo.nm}}</text>
-      <text class="filmInfo_enm">{{filmInfo.enm}}</text>
-      <text class=" {{filmInfo.comScorePersona?'hidden':'filmInfo__wish'}}">{{filmInfo.wish}}人想看</text>
-      <text class=" {{filmInfo.comScorePersona?'filmInfo__wish':'hidden'}}">{{filmInfo.sc}}分</text>
-      <view class="filmInfo_desc-detail">
-        <text class="filmInfo__desc_cat">{{filmInfo.cat}}</text>
-        <text class="filmInfo__desc_fra">{{filmInfo.src}}/{{filmInfo.dur}}分钟</text>
-        <text class="filmInfo__desc_pub">{{filmInfo.pubDesc}}</text>
+        <image src="{{filmInfo.img}}" mode="aspectFill"/>
+        <view class="filmInfo__header_desc">
+        <text class="filmInfo_name">{{filmInfo.nm}}</text>
+        <text class="filmInfo_enm">{{filmInfo.enm}}</text>
+        <text class=" {{filmInfo.comScorePersona?'hidden':'filmInfo__wish'}}">{{filmInfo.wish}}人想看</text>
+        <text class=" {{filmInfo.comScorePersona?'filmInfo__wish':'hidden'}}">{{filmInfo.sc}}</text>
+        <view class="filmInfo_desc-detail">
+          <text class="filmInfo__desc_cat">{{filmInfo.cat}}</text>
+          <text class="filmInfo__desc_fra">{{filmInfo.src}}/{{filmInfo.dur}}分钟</text>
+          <text class="filmInfo__desc_pub">{{filmInfo.pubDesc}}</text>
+        </view>
       </view>
     </view>
+    <view class="filmInfo__header-btn">
+      <view class="header-btn">
+        <image src="../../images/wish.png"/>
+        {{filmInfo.comScorePersona?'喜欢':'想看'}}
+        </view>
+      <view class="header-btn">
+        <image src="../../images/score.png"/>
+        评分
+      </view>
     </view>
   </view>
   <view class="filmInfo__body">
-    <view class="filmInfo__intr">
-
+    <view class="filmInfo__intr" bindtap='changeFold'>
+      <text class="filmInfo__intr-text {{isFold?'fold':'show'}}">{{filmInfo.dra}}
+      </text>
+      <view class="filmInfo__intr-arrow">
+        <image src="{{isFold?'../../images/fold.png':'../../images/show.png'}}"/>
+      </view>
     </view>
     <view class="filmInfo__act">
+      <text class="filmInfo__act-title">演职人员</text>
+      <scroll-view class="filmInfo__act-scroll" scroll-x="true">
+        <view class="filmInfo__act-actInfo">
+          <block wx:for="{{actors}}" wx:for-index="index" wx:key="index" wx:for-item="items">
+            <block wx:for="{{items}}" wx:for-item="act" wx:for-index="index" wx:key="{{act.id}}">
+              <view class="actInfo {{act.cr===4?'hidden':''}}">
+                <image src="{{act.avatar}}" type="widthFix"/>
+                <text class="actInfo-name">{{act.cnm}}</text>
+                <text class="actInfo-role">{{act.roles===''?'演员':act.roles}}</text>
+              </view>
+            </block>
+          </block>
+        </view>
+      </scroll-view>
     </view>
     <view class="filmInfo__tict">
     </view>

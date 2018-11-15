@@ -6,19 +6,26 @@ Page({
    */
   data: {
     filmInfo:{},
+    isFold:true,
+    actors:[]
   },
 
+
+  changeFold(){
+    this.setData({
+      isFold:!this.data.isFold
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     console.log(options);
     wx.request({
-      url: 'https://wx.maoyan.com/hostproxy/mmdb/movie/v5/'+options.id+'.json',//42964
+      url: 'https://wx.maoyan.com/hostproxy/mmdb/movie/v5/42964.json',//options.id
       method: 'GET',
       header: { str: 'content-type:application/json;charset=UTF-8' },
       success:res=>{
-        console.log(res)
         let result = res.data.data.movie;
          result.img = result.img.replace('/w.h/movie','/movie');
          for(let i=0; i<result.photos.length;i++){
@@ -26,6 +33,28 @@ Page({
          }
         this.setData({
           filmInfo:result
+        })
+      }
+    })
+    wx.request({
+      url: 'https://wx.maoyan.com/hostproxy/mmdb/v7/movie/42964/celebrities.json',//options.id
+      method: 'GET',
+      header: { str: 'content-type:application/json;charset=UTF-8' },
+      success:actRes=>{
+        console.log(actRes.data.data)
+        let actResult = actRes.data.data
+        actResult[0][0].roles="导演"
+        for(let i=0;i<actResult.length;i++){
+          for(let j=0;j<actResult[i].length;j++){
+      
+            actResult[i][j].avatar = actResult[i][j].avatar.replace('/w.h/', '/')
+          }
+          actResult[i].filter((item) => {
+            return item.roles != '';
+          })
+        }
+        this.setData({
+          actors:actResult
         })
       }
     })
