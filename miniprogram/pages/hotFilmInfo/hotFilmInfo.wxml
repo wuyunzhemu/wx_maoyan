@@ -22,7 +22,7 @@
         </view>
       </view>
     </view>
-    <view class="filmInfo__header-btn">
+    <view class="filmInfo__header-btnlist">
       <view class="header-btn">
         <image src="../../images/wish.png"/>
         {{filmInfo.comScorePersona?'喜欢':'想看'}}
@@ -59,9 +59,18 @@
     </view>
     <view class="filmInfo__tict">
     </view>
-    <view class="filmInfo__media">
+    <view class="filmInfo__photos">
+      <view class="filmInfo__photos-title">
+        <text>视频和剧照</text>
+        <view class="pic-num">
+          {{filmInfo.pn}}
+          <text class="right_arrow"></text>
+        </view>
+      </view>
+
     </view>
   </view>
   <view class="filmInfo__comnt">
   </view>
+  <view class="buy-tict" >优惠购票</view>
 </view>

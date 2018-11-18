@@ -65,9 +65,9 @@ Page({
         }
         let result = res.data.data.hot;
         let hotList = this.data.hot;  
-        for (let i = 0; i < result.length; i++) {
-          result[i].img = result[i].img.replace('w.h/movie', 'movie')
-        }
+        result.map(item => {
+          return item.img.replace('/w.h/', '/')
+        })
         hotList=[...hotList,...res.data.data.hot]
         let increaseNum = result.length-this.data.hot.length;   //每次请求增加多少数据
         this.setData({

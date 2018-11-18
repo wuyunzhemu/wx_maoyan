@@ -28,10 +28,8 @@ Page({
       header: { str: 'content-type:application/json;charset=UTF-8' },
       success:res=>{
         let result = res.data.data.movie;
-         result.img = result.img.replace('/w.h/movie','/movie');
-         for(let i=0; i<result.photos.length;i++){
-           result.photos[i] = result.photos[i].replace('/w.h/movie', '/movie');
-         }
+        result.img = result.img.replace('/w.h/movie','/movie');
+        result.photos = that.getRealUrl(result.photos)
         let score = that.convertStarArray(result.sc)
         this.setData({
           filmInfo:result,
@@ -46,20 +44,28 @@ Page({
       header: { str: 'content-type:application/json;charset=UTF-8' },
       success:actRes=>{
         let actResult = actRes.data.data
+        console.log(actResult)
         actResult[0][0].roles="导演"
-        for(let i=0;i<actResult.length;i++){
-          for(let j=0;j<actResult[i].length;j++){
-      
-            actResult[i][j].avatar = actResult[i][j].avatar.replace('/w.h/', '/')
-          }
-          actResult[i].filter((item) => {
-            return item.roles != '';
+        actResult.map((actor)=>{
+          actor=actor.map((item)=>{
+            item.avatar = item.avatar.replace('/w.h/', '/');//得到正确地址
+            item.roles != ''; //演职人员列表只展示导演及演员
+            return item;
           })
-        }
+          return actor;
+        })
         this.setData({
           actors:actResult
         })
       }
+    })
+  },
+
+  getRealUrl(arr){
+    //得到图片正确路径
+    arr.map(item=>{
+      item.replace('/w.h/', '/');
+      return item
     })
   },
 
