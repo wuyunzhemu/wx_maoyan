@@ -9,7 +9,12 @@
         <text class="filmInfo_name">{{filmInfo.nm}}</text>
         <text class="filmInfo_enm">{{filmInfo.enm}}</text>
         <text class=" {{filmInfo.comScorePersona?'hidden':'filmInfo__wish'}}">{{filmInfo.wish}}人想看</text>
-        <text class=" {{filmInfo.comScorePersona?'filmInfo__wish':'hidden'}}">{{filmInfo.sc}}</text>
+        <view class="filmInfo__score">
+            <block wx:for="{{score}}" wx:key="index" wx:for-item="item">
+              <image src="{{item===1?'../../images/star-full.png':(item===2?'../../images/star-half.png':'../../images/star-empt.png')}}"/>
+            </block>
+            <text class=" {{filmInfo.comScorePersona?'filmInfo__sc':'hidden'}}">{{filmInfo.sc}}</text>
+        </view>
         <view class="filmInfo_desc-detail">
           <text class="filmInfo__desc_cat">{{filmInfo.cat}}</text>
           <text class="filmInfo__desc_fra">{{filmInfo.src}}/{{filmInfo.dur}}分钟</text>

@@ -7,7 +7,8 @@ Page({
   data: {
     filmInfo:{},
     isFold:true,
-    actors:[]
+    actors:[],
+    score:[]
   },
 
 
@@ -20,7 +21,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
+    let that = this
     wx.request({
       url: 'https://wx.maoyan.com/hostproxy/mmdb/movie/v5/42964.json',//options.id
       method: 'GET',
@@ -31,17 +32,19 @@ Page({
          for(let i=0; i<result.photos.length;i++){
            result.photos[i] = result.photos[i].replace('/w.h/movie', '/movie');
          }
+        let score = that.convertStarArray(result.sc)
         this.setData({
-          filmInfo:result
+          filmInfo:result,
+          score:score
         })
       }
-    })
+    });
+
     wx.request({
       url: 'https://wx.maoyan.com/hostproxy/mmdb/v7/movie/42964/celebrities.json',//options.id
       method: 'GET',
       header: { str: 'content-type:application/json;charset=UTF-8' },
       success:actRes=>{
-        console.log(actRes.data.data)
         let actResult = actRes.data.data
         actResult[0][0].roles="导演"
         for(let i=0;i<actResult.length;i++){
@@ -58,6 +61,22 @@ Page({
         })
       }
     })
+  },
+
+  convertStarArray(score) {
+      // 1 全星,0 空星,2半星
+    let star = score / 2;
+    let arr = []
+    for(let i = 1; i <= 5; i++) {
+    if (star >= i) {
+      arr.push(1)
+    } else if (score > i - 1 && star < i + 1) {
+      arr.push(2)
+    } else {
+      arr.push(0)
+    }
+  }
+  return arr
   },
 
   /**

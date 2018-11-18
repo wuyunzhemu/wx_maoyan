@@ -61,7 +61,6 @@ page,.container{
 .filmInfo__body{
   position: relative;
   width:100%;
-  height:100%;
 }
 
 .filmInfo_name
@@ -71,14 +70,33 @@ page,.container{
 
 .filmInfo_enm{
   font-size: 24rpx;
+
 }
 
-.filmInfo__wish{
+.filmInfo__wish,.filmInfo__sc{
   color:#ffc600!important;
   height:40rpx;
   font-size: 36rpx;
   margin-top:10rpx;
   margin-bottom: 10rpx;
+}
+
+.filmInfo__sc{
+  display: inline-block !important;
+  width:60rpx;
+  text-align: center;
+}
+
+.filmInfo__score{
+    width:100%;
+}
+
+.filmInfo__score image{
+  border:none;
+  display: inline-block;
+  height:30rpx;
+  width:30rpx;
+  margin-right: 5rpx;
 }
 
 .filmInfo_desc-detail text{
