@@ -44,7 +44,6 @@ Page({
       header: { str: 'content-type:application/json;charset=UTF-8' },
       success:actRes=>{
         let actResult = actRes.data.data
-        console.log(actResult)
         actResult[0][0].roles="导演"
         actResult.map((actor)=>{
           actor=actor.map((item)=>{
@@ -63,10 +62,11 @@ Page({
 
   getRealUrl(arr){
     //得到图片正确路径
-    arr.map(item=>{
-      item.replace('/w.h/', '/');
-      return item
+    arr = arr.map((item)=>{
+      item = item.replace('/w.h/', '/');
+      return item;
     })
+    return arr;
   },
 
   convertStarArray(score) {

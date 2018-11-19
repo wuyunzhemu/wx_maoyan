@@ -48,12 +48,16 @@
           <block wx:for="{{actors}}" wx:for-index="index" wx:key="index" wx:for-item="items">
             <block wx:for="{{items}}" wx:for-item="act" wx:for-index="index" wx:key="{{act.id}}">
               <view class="actInfo {{act.cr===4?'hidden':''}}">
-                <image src="{{act.avatar}}" type="widthFix"/>
+                <image src="{{act.avatar}}" mode="aspectFill"/>
                 <text class="actInfo-name">{{act.cnm}}</text>
                 <text class="actInfo-role">{{act.roles===''?'演员':act.roles}}</text>
               </view>
             </block>
           </block>
+           <text class='space'  decode="{{true}}"> 
+           <!-- 设置不好右边距，暴力解决 -->
+              &nbsp;
+            </text>
         </view>
       </scroll-view>
     </view>
@@ -67,10 +71,47 @@
           <text class="right_arrow"></text>
         </view>
       </view>
-
+      <scroll-view class="filmInfo__photos-scroll" scroll-x="true">
+        <view class="filmInfo__photos-bd">
+          <block wx:for="{{filmInfo.photos}}" wx:key="index" wx:for-item="item">
+            <view class="filmInfo__photo">
+              <image src="{{item}}" mode="aspectFill"/>
+            </view>
+          </block>
+          <text class='space'  decode="{{true}}">  
+          <!-- 设置不好右边距，暴力解决 -->
+            &nbsp;&nbsp;
+          </text>
+        </view>
+      </scroll-view>
     </view>
   </view>
   <view class="filmInfo__comnt">
+    <view class="filmInfo__comnt-title">
+      <text class="comnt-title">观众评论</text>
+      <view class="comnt-writter">写短评</view>
+    </view>
+    <view class="comnt-list">
+      <block>
+        <view class="comnt-item">
+          <view class="comnt-avatar">
+          </view>
+          <view class="comnt-detail">
+            <view class="comnt_hd"></view>
+              <text class="comnt_hd-userName"></text>
+              <view class="comnt_hd-mks"></view>
+            <view class="comnt-bd"></view>
+            <view class="comnt-ft">
+              <text class="comnt-date"></text>
+              <view class="comnt-like">
+                <image class="like"/>
+                <text class="comnt-like-num"></text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
   </view>
   <view class="buy-tict" >优惠购票</view>
 </view>
