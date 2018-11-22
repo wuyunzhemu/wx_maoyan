@@ -1,0 +1,5 @@
+<!--components/scoreToStar/scoreToStar.wxml-->
+
+  <block  wx:for="{{star}}" wx:key="index" wx:for-item="item">
+    <image class="star {{size}}" src="{{item===1?'../../images/star-full.png':(item===2?'../../images/star-half.png':'../../images/star-empt.png')}}"/>
+  </block>

@@ -1,8 +1,7 @@
 {
   "navigationBarTitleText": "影片详情",
   "usingComponents":{
-    "van-group":"../../vant-weapp/cell-group/index",
-    "van-cell":"../../vant-weapp/cell/index"
+    "star":"../../components/scoreToStar/scoreToStar"
   },
   "enablePullDownRefresh":false
 }

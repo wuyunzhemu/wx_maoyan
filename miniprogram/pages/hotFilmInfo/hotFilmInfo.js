@@ -8,7 +8,10 @@ Page({
     filmInfo:{},
     isFold:true,
     actors:[],
-    score:[]
+    comnts:{
+      list:[],
+      total:0
+    }
   },
 
 
@@ -30,10 +33,11 @@ Page({
         let result = res.data.data.movie;
         result.img = result.img.replace('/w.h/movie','/movie');
         result.photos = that.getRealUrl(result.photos)
-        let score = that.convertStarArray(result.sc)
+        result.sc = parseFloat(result.sc);
+        // let score = that.convertStarArray(result.sc/2)
         this.setData({
           filmInfo:result,
-          score:score
+          // score:score
         })
       }
     });
@@ -45,8 +49,8 @@ Page({
       success:actRes=>{
         let actResult = actRes.data.data
         actResult[0][0].roles="导演"
-        actResult.map((actor)=>{
-          actor=actor.map((item)=>{
+        actResult.forEach((actor)=>{
+          actor=actor.forEach((item)=>{
             item.avatar = item.avatar.replace('/w.h/', '/');//得到正确地址
             item.roles != ''; //演职人员列表只展示导演及演员
             return item;
@@ -55,6 +59,24 @@ Page({
         })
         this.setData({
           actors:actResult
+        })
+      }
+    });
+    wx.request({
+      url: 'https://wx.maoyan.com/hostproxy/mmdb/comments/movie/v2/42964.json',//options.id
+      method:'GET',
+      header: { str: 'content-type:application/json;charset=UTF-8' },
+      success:comntRes=>{
+        console.log(comntRes);
+        let comnts = [];
+        for(let i =0;i<3;i++){
+          // comntRes.data.hcmts[i].starArr =that.convertStarArray( comntRes.data.hcmts[i].score)
+          comnts.push(comntRes.data.hcmts[i])
+        }
+           
+        that.setData({
+          'comnts.list':comnts,
+          'comnts.total':comntRes.data.total
         })
       }
     })
@@ -69,21 +91,20 @@ Page({
     return arr;
   },
 
-  convertStarArray(score) {
-      // 1 全星,0 空星,2半星
-    let star = score / 2;
-    let arr = []
-    for(let i = 1; i <= 5; i++) {
-    if (star >= i) {
-      arr.push(1)
-    } else if (score > i - 1 && star < i + 1) {
-      arr.push(2)
-    } else {
-      arr.push(0)
-    }
-  }
-  return arr
-  },
+  // convertStarArray(score) {
+  //     // 1 全星,0 空星,2半星
+  //   let arr = []
+  //   for(let i = 1; i <= 5; i++) {
+  //   if (score >= i) {
+  //     arr.push(1)
+  //   } else if (score > i - 1 && score < i + 1) {
+  //     arr.push(2)
+  //   } else {
+  //     arr.push(0)
+  //   }
+  // }
+  // return arr
+  // },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

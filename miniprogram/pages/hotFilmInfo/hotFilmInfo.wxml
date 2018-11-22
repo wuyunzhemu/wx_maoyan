@@ -4,16 +4,14 @@
       <image src="{{filmInfo.img}}" mode="aspectFill" class="filmInfo__header_bgImg"/>
     </view>
     <view class="filmInfo__header_items">
-        <image src="{{filmInfo.img}}" mode="aspectFill"/>
+        <image class="post" src="{{filmInfo.img}}" mode="aspectFill"/>
         <view class="filmInfo__header_desc">
         <text class="filmInfo_name">{{filmInfo.nm}}</text>
         <text class="filmInfo_enm">{{filmInfo.enm}}</text>
         <text class=" {{filmInfo.comScorePersona?'hidden':'filmInfo__wish'}}">{{filmInfo.wish}}人想看</text>
         <view class="filmInfo__score">
-            <block wx:for="{{score}}" wx:key="index" wx:for-item="item">
-              <image src="{{item===1?'../../images/star-full.png':(item===2?'../../images/star-half.png':'../../images/star-empt.png')}}"/>
-            </block>
-            <text class=" {{filmInfo.comScorePersona?'filmInfo__sc':'hidden'}}">{{filmInfo.sc}}</text>
+          <star size="normal" score="{{filmInfo.sc/2}}"></star>
+          <text class=" {{filmInfo.comScorePersona?'filmInfo__sc':'hidden'}}">{{filmInfo.sc}}</text>
         </view>
         <view class="filmInfo_desc-detail">
           <text class="filmInfo__desc_cat">{{filmInfo.cat}}</text>
@@ -92,25 +90,28 @@
       <view class="comnt-writter">写短评</view>
     </view>
     <view class="comnt-list">
-      <block>
+      <block wx:for="{{comnts.list}}" wx:key="item.id" wx:for-item="item">
         <view class="comnt-item">
           <view class="comnt-avatar">
+            <image class="comnt-user-avatar" src="{{item.avatarurl}}"/>
           </view>
           <view class="comnt-detail">
-            <view class="comnt_hd"></view>
-              <text class="comnt_hd-userName"></text>
-              <view class="comnt_hd-mks"></view>
-            <view class="comnt-bd"></view>
+            <view class="comnt_hd">
+              <text class="comnt_hd-userName">{{item.nickName}}</text>
+              <star size="mini" score="{{item.score}}"></star>
+            </view>
+            <view class="comnt-bd">{{item.content}}</view>
             <view class="comnt-ft">
-              <text class="comnt-date"></text>
+              <text class="comnt-date">{{item.time}}</text>
               <view class="comnt-like">
                 <image class="like"/>
-                <text class="comnt-like-num"></text>
+                <text class="comnt-like-num">{{item.approve}}</text>
               </view>
             </view>
           </view>
         </view>
       </block>
+      <view class="filmInfo__comnt-showAll">查看全部{{comnts.total}}条观众评论</view>
     </view>
   </view>
   <view class="buy-tict" >优惠购票</view>

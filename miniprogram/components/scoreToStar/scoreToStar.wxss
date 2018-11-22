@@ -1,0 +1,20 @@
+/* components/scoreToStar/scoreToStar.wxss */
+.star-list{
+  display: inline-block;
+}
+.star{
+  border:none;
+  display: inline-block;
+  height:30rpx;
+  width:30rpx;
+  margin-right: 5rpx;
+}
+
+.star.mini{
+  margin-bottom: 17rpx;
+  border:none;
+  display: inline-block;
+  height:15rpx;
+  width:15rpx;
+  margin-right: 5rpx;
+}

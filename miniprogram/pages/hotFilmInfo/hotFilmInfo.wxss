@@ -58,7 +58,7 @@ page,.container{
   width: 120%;
 }
 
-.filmInfo__header_items image{
+.filmInfo__header_items .post{
   box-sizing: border-box;
   border:1px solid #949194;
   display: block;
@@ -111,13 +111,7 @@ page,.container{
     width:100%;
 }
 
-.filmInfo__score image{
-  border:none;
-  display: inline-block;
-  height:30rpx;
-  width:30rpx;
-  margin-right: 5rpx;
-}
+
 
 .filmInfo_desc-detail text{
   margin-top:8rpx;
@@ -306,5 +300,110 @@ page,.container{
 }
 
 .filmInfo__comnt{
-  height:280rpx;
+  margin-top: 23rpx;
+  background: #fff;
+  margin-bottom:100rpx;
+}
+
+.filmInfo__comnt-title{
+  padding-left:30rpx;
+  padding-right: 30rpx;
+  border-top:1px solid #d8d8d8;
+  border-bottom: 1px solid #d8d8d8;
+  height:86rpx;
+  line-height: 86rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.comnt-list{
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+}
+
+.comnt-title{
+  font-size: 30rpx;
+}
+
+.comnt-writter{
+  line-height: 48rpx;
+  margin-top:18rpx;
+  display: block;
+  height:48rpx;
+  border:2rpx solid #ef4238;
+  color:#ef4238;
+  border-radius: 30rpx;
+  width:125rpx;
+  font-size: 26rpx;
+  text-align: center;
+}
+
+.comnt-item{
+ 
+  margin-top:30rpx;
+  height:auto;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.comnt-avatar{
+  margin-left:18rpx;
+  margin-right: 18rpx;
+}
+
+.comnt-user-avatar{
+
+  width: 60rpx;
+  height:60rpx;
+  border-radius: 50%;
+}
+
+
+.comnt-detail{
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #e4e4e4;
+  padding-right: 28rpx;
+  
+}
+
+
+.comnt_hd-userName{
+  display: block;
+  font-size: 24rpx;
+}
+
+.comnt-hd{
+  flex:0.5;
+}
+.comnt-bd{
+  margin-top: -10rpx;
+  padding-right: 30rpx;
+  font-size: 28rpx;
+}
+
+.comnt-ft{
+  height:70rpx;
+  line-height: 70rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.comnt-ft image{
+  width: 20rpx;
+  height:20rpx;
+}
+
+.comnt-date{
+  font-size: 22rpx;
+  color:#999999;
+}
+
+.comnt-like-num{
+  font-size: 22rpx;
+  color:#b2b2b2
 }
