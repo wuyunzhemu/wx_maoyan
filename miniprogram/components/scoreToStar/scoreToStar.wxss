@@ -14,7 +14,7 @@
   margin-bottom: 17rpx;
   border:none;
   display: inline-block;
-  height:15rpx;
-  width:15rpx;
+  height:22rpx;
+  width:22rpx;
   margin-right: 5rpx;
 }

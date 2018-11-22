@@ -10,7 +10,9 @@ Page({
     actors:[],
     comnts:{
       list:[],
-      total:0
+      total:0,
+      showDialog:false,
+      actOnShow:{}
     }
   },
 
@@ -71,6 +73,7 @@ Page({
         let comnts = [];
         for(let i =0;i<3;i++){
           // comntRes.data.hcmts[i].starArr =that.convertStarArray( comntRes.data.hcmts[i].score)
+          comntRes.data.hcmts[i]['date'] = that.strToDate(comntRes.data.hcmts[i].time)
           comnts.push(comntRes.data.hcmts[i])
         }
            
@@ -91,21 +94,30 @@ Page({
     return arr;
   },
 
-  // convertStarArray(score) {
-  //     // 1 全星,0 空星,2半星
-  //   let arr = []
-  //   for(let i = 1; i <= 5; i++) {
-  //   if (score >= i) {
-  //     arr.push(1)
-  //   } else if (score > i - 1 && score < i + 1) {
-  //     arr.push(2)
-  //   } else {
-  //     arr.push(0)
-  //   }
-  // }
-  // return arr
-  // },
+  strToDate(str){
+    //从时间字符串得到日期
+    str = str.replace(/-/g,'/');
+    let dateObj = new Date(str);
+    let month = dateObj.getMonth() + 1;
+    let day = dateObj.getDate();
+    if(month >0 && month <10){
+      month = '0'+month
+    }
+    if(day>0 && day<10){
+      day = '0'+day
+    }
+    let date = month + '-' +day;
+    return date;
+  },
 
+  showActDetail(e){
+    //展示演员细节信息
+    let act = e.currentTarget.dataset.act;
+    this.setData({
+      showDialog:true,
+      actOnShow:act
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

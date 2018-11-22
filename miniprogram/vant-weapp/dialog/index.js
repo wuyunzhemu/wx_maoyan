@@ -9,6 +9,7 @@ VantComponent({
     useSlot: Boolean,
     asyncClose: Boolean,
     showCancelButton: Boolean,
+    showConfirmButton:Boolean,
     closeOnClickOverlay: Boolean,
     confirmButtonOpenType: String,
     zIndex: {
@@ -17,7 +18,7 @@ VantComponent({
     },
     confirmButtonText: {
       type: String,
-      value: '确认'
+      value: '确认',
     },
     cancelButtonText: {
       type: String,

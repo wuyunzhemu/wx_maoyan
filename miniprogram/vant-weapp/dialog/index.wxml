@@ -34,7 +34,7 @@
       {{ cancelButtonText }}
     </van-button>
     <van-button
-      wx:if="{{ showConfirmButton }}"
+      wx:if="{{ showConfirmButtontrue }}"
       size="large"
       class="van-dialog__button"
       loading="{{ loading.confirm }}"

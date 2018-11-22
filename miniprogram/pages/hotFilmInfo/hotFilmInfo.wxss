@@ -1,4 +1,7 @@
 /* miniprogram/pages/hotFilmInfo/hotFilmInfo.wxss */
+view{
+  box-sizing: border-box;
+}
 .hidden{
   display: none!important;
 }
@@ -302,14 +305,14 @@ page,.container{
 .filmInfo__comnt{
   margin-top: 23rpx;
   background: #fff;
-  margin-bottom:100rpx;
+  margin-bottom:125rpx;
 }
 
 .filmInfo__comnt-title{
   padding-left:30rpx;
   padding-right: 30rpx;
-  border-top:1px solid #d8d8d8;
-  border-bottom: 1px solid #d8d8d8;
+  border-top:2rpx solid #d8d8d8;
+  border-bottom: 2rpx solid #d8d8d8;
   height:86rpx;
   line-height: 86rpx;
   display: flex;
@@ -365,7 +368,7 @@ page,.container{
 .comnt-detail{
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid #e4e4e4;
+  border-bottom: 1rpx solid #e5e5e5;
   padding-right: 28rpx;
   
 }
@@ -393,17 +396,72 @@ page,.container{
   justify-content: space-between;
 }
 
-.comnt-ft image{
-  width: 20rpx;
-  height:20rpx;
-}
-
 .comnt-date{
   font-size: 22rpx;
   color:#999999;
 }
 
+.comnt-like-img{
+  position: relative;
+  top:8rpx;
+  height:40rpx;
+  width:40rpx;
+}
+
 .comnt-like-num{
   font-size: 22rpx;
   color:#b2b2b2
+}
+
+.filmInfo__comnt-showAll{
+  margin-top: -1rpx;
+  height:84rpx;
+  line-height: 84rpx;
+  font-size: 30rpx;
+  color:#ef4238;
+  border-top:1rpx solid #e3e3e3;
+  border-bottom: 1rpx solid #d0d0d0;
+  text-align: center;
+}
+
+.filmInfo__comnt-showAll:active{
+  -webkit-tap-highlight-color: transparent;
+  background-color:#f5f5f5;
+}
+
+.dialog-container{
+  margin: 50rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.dialog-container text{
+  height:50rpx;
+  display: block;
+}
+
+.dialog-desc{
+  flex:0.8;
+}
+.dialog-cname{
+  font-size: 30rpx;
+}
+
+.dialog-ename{
+  font-size: 24rpx;
+  color:#6d6d6d;
+}
+
+.dialog-container .dialog-role{
+  height:auto;
+  color:#999999;
+  font-size: 24rpx;
+  vertical-align: sub;
+}
+
+.dialog-img{
+  height:150rpx;
+  width:150rpx;
+  border-radius: 50%;
 }

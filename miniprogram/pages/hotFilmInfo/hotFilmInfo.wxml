@@ -45,7 +45,7 @@
         <view class="filmInfo__act-actInfo">
           <block wx:for="{{actors}}" wx:for-index="index" wx:key="index" wx:for-item="items">
             <block wx:for="{{items}}" wx:for-item="act" wx:for-index="index" wx:key="{{act.id}}">
-              <view class="actInfo {{act.cr===4?'hidden':''}}">
+              <view bindtap='showActDetail' data-act="{{act}}" class="actInfo {{act.cr===4?'hidden':''}}">
                 <image src="{{act.avatar}}" mode="aspectFill"/>
                 <text class="actInfo-name">{{act.cnm}}</text>
                 <text class="actInfo-role">{{act.roles===''?'演员':act.roles}}</text>
@@ -102,17 +102,35 @@
             </view>
             <view class="comnt-bd">{{item.content}}</view>
             <view class="comnt-ft">
-              <text class="comnt-date">{{item.time}}</text>
+              <text class="comnt-date">{{item.date}}</text>
               <view class="comnt-like">
-                <image class="like"/>
+                <image class="comnt-like-img" src="../../images/ass.png"/>
                 <text class="comnt-like-num">{{item.approve}}</text>
               </view>
             </view>
           </view>
         </view>
       </block>
-      <view class="filmInfo__comnt-showAll">查看全部{{comnts.total}}条观众评论</view>
     </view>
+    <view class="filmInfo__comnt-showAll">查看全部{{comnts.total}}条观众评论</view>
   </view>
   <view class="buy-tict" >优惠购票</view>
 </view>
+
+<!-- 弹出框 -->
+<van-dialog
+  show="{{showDialog?true:false}}"
+  use-slot
+  showConfirmButton="false"
+  close-on-click-overlay="true"
+  z-index="100"
+>
+<view class="dialog-container">
+  <view class="dialog-desc">
+    <text class="dialog-cname">{{actOnShow.cnm}}</text>
+    <text class="dialog-ename">{{actOnShow.enm}}</text>
+    <text class="dialog-role">{{actOnShow.roles==='导演'?actOnShow.roles:'饰:'+actOnShow.roles}}</text>
+  </view>
+  <image class="dialog-img" src="{{actOnShow.still?actOnShow.still:''}}"/>
+</view>
+</van-dialog>
