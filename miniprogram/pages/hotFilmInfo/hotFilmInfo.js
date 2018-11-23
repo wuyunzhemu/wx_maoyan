@@ -1,4 +1,5 @@
 // miniprogram/pages/hotFilmInfo/hotFilmInfo.js
+const apiMock = require('../../libs/api-mock.js')
 Page({
 
   /**
@@ -6,18 +7,59 @@ Page({
    */
   data: {
     filmInfo:{},
-    isFold:true,
+    isFold:true,  //电影简介折叠状态
     actors:[],
     comnts:{
       list:[],
       total:0,
       showDialog:false,
       actOnShow:{}
+    },
+    watch:-1   //电影状态：-1 未看 0 想看 1 已看 
+  },
+
+  changeWatch(){
+    //修改观影状态
+    let watch = this.data.watch;
+    if(watch === -1){
+      this.setData({
+        watch: 0
+      })
+      wx.showToast({
+        title: '已标记想看',
+        icon:'success'
+      });
+    }
+    else if(watch ===0){
+      this.setData({
+        watch: -1
+      })
+      wx.showToast({
+        title: '已取消想看',
+        icon: 'success'
+      });
+    }
+    else if (watch === 1) {
+      
+      wx.showModal({
+        title: '是否取消看过？',
+        content: '若取消看过，您的评分也将被删除',
+        success:res=>{
+          if(res.confirm){
+            this.setData({
+              watch: -1
+            });
+          }
+          if(res.cancel){
+            
+          }
+        }
+      })
     }
   },
 
-
   changeFold(){
+    //修改电影简介折叠状态
     this.setData({
       isFold:!this.data.isFold
     })
@@ -26,33 +68,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this
-    wx.request({
-      url: 'https://wx.maoyan.com/hostproxy/mmdb/movie/v5/42964.json',//options.id
-      method: 'GET',
-      header: { str: 'content-type:application/json;charset=UTF-8' },
-      success:res=>{
-        let result = res.data.data.movie;
-        result.img = result.img.replace('/w.h/movie','/movie');
-        result.photos = that.getRealUrl(result.photos)
-        result.sc = parseFloat(result.sc);
-        // let score = that.convertStarArray(result.sc/2)
-        this.setData({
-          filmInfo:result,
-          // score:score
-        })
-      }
-    });
+    let that = this;
+    let id = options.id
+    apiMock.getFilmDetail(id,res=>{
+      //得到影片详情信息
+      let that = this;
+      let result = res.data.data.movie;
+      result.img = result.img.replace('/w.h/movie', '/movie');
+      result.photos = that.getRealUrl(result.photos)
+      result.sc = parseFloat(result.sc);
+      // let score = that.convertStarArray(result.sc/2)
+      this.setData({
+        filmInfo: result,
+        // score:score
+      });
+    })
 
-    wx.request({
-      url: 'https://wx.maoyan.com/hostproxy/mmdb/v7/movie/42964/celebrities.json',//options.id
-      method: 'GET',
-      header: { str: 'content-type:application/json;charset=UTF-8' },
-      success:actRes=>{
+      apiMock.getActInfo(id,actRes=>{
+        //得到演员信息
         let actResult = actRes.data.data
-        actResult[0][0].roles="导演"
-        actResult.forEach((actor)=>{
-          actor=actor.forEach((item)=>{
+        actResult[0].forEach(item=>{
+          item.roles = '导演'
+        })
+        actResult.forEach((actor) => {
+          actor = actor.forEach((item) => {
             item.avatar = item.avatar.replace('/w.h/', '/');//得到正确地址
             item.roles != ''; //演职人员列表只展示导演及演员
             return item;
@@ -60,28 +99,32 @@ Page({
           return actor;
         })
         this.setData({
-          actors:actResult
-        })
-      }
-    });
-    wx.request({
-      url: 'https://wx.maoyan.com/hostproxy/mmdb/comments/movie/v2/42964.json',//options.id
-      method:'GET',
-      header: { str: 'content-type:application/json;charset=UTF-8' },
-      success:comntRes=>{
-        console.log(comntRes);
-        let comnts = [];
-        for(let i =0;i<3;i++){
-          // comntRes.data.hcmts[i].starArr =that.convertStarArray( comntRes.data.hcmts[i].score)
-          comntRes.data.hcmts[i]['date'] = that.strToDate(comntRes.data.hcmts[i].time)
-          comnts.push(comntRes.data.hcmts[i])
-        }
-           
-        that.setData({
-          'comnts.list':comnts,
-          'comnts.total':comntRes.data.total
-        })
-      }
+          actors: actResult
+        });
+      })
+        
+   apiMock.getComnts(id,comntRes=>{
+    //  得到热评信息
+     console.log(comntRes);
+     let comnts = [];
+     for (let i = 0; i < 3; i++) {
+       // comntRes.data.hcmts[i].starArr =that.convertStarArray( comntRes.data.hcmts[i].score)
+       comntRes.data.hcmts[i]['date'] = that.strToDate(comntRes.data.hcmts[i].time)
+       comnts.push(comntRes.data.hcmts[i])
+     }
+     that.setData({
+       'comnts.list': comnts,
+       'comnts.total': comntRes.data.total
+     })
+   })
+  },
+  showPhoto(e){
+    //点击图片大图预览
+    let src = e.currentTarget.dataset.src;
+    let imgList = e.currentTarget.dataset.list;
+    wx.previewImage({
+      current:src,
+      urls: imgList,
     })
   },
 
@@ -116,6 +159,13 @@ Page({
     this.setData({
       showDialog:true,
       actOnShow:act
+    })
+  },
+  setScore(){
+    //未实现功能
+    wx.showToast({
+      title: '此功能暂时不可用',
+      icon:'none'
     })
   },
   /**

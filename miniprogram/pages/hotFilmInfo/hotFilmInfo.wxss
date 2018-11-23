@@ -38,7 +38,7 @@ page,.container{
 }
 
 .filmInfo__header_bg{
-  filter: blur(30rpx);
+  filter: blur(30rpx) brightness(0.6);
   width: 105%;
   height:105%;
   overflow: hidden;
@@ -136,11 +136,11 @@ page,.container{
   height:55rpx;
   color:#f9f9f9;
   text-align: center;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 6rpx;
   font-size: 28rpx;
   line-height: 55rpx;
-  border:1px solid #7a7b7e
+  border:1px solid rgba(255, 255, 255, 0.3)
 }
 
 .header-btn image{
@@ -343,7 +343,7 @@ page,.container{
 }
 
 .comnt-item{
- 
+  width:100%;
   margin-top:30rpx;
   height:auto;
   padding-left: 10rpx;
@@ -370,7 +370,7 @@ page,.container{
   flex-direction: column;
   border-bottom: 1rpx solid #e5e5e5;
   padding-right: 28rpx;
-  
+  flex:1;
 }
 
 

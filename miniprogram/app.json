@@ -1,8 +1,9 @@
 {
   "cloud": true,
   "pages": [
-    "pages/hotFilmInfo/hotFilmInfo",
     "pages/index/index",
+    "pages/hotFilmInfo/hotFilmInfo",
+
     "pages/cinema/cinema",
     "pages/mine/mine",
     "components/loading/loading"

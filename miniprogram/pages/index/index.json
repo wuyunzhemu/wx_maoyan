@@ -1,5 +1,5 @@
 {
-  
+  "enablePullDownRefresh": true,
   "navigationBarTitleText": "猫眼电影",
   "usingComponents":{
     "van-row":"../../vant-weapp/row/index",

@@ -1,4 +1,5 @@
 //index.js
+const apiMock = require('../../libs/api-mock.js')
 const QQMapWX = require('../../libs//qqmap-wx-jssdk.js');
 const qqmap = new QQMapWX({
   key: '4LJBZ-CQI6U-ZBZVR-BJZ2Y-IX3OQ-LUBZG'
@@ -47,16 +48,9 @@ Page({
 
   getOnShowFilmInfo:function(){    
     //获取热映影片基础信息
-    wx.request({
-      url: 'https://wx.maoyan.com/mmdb/movie/v2/list/hot.json',
-      method: 'GET',
-      header: {str:'content-type:application/json;charset=UTF-8'},
-      data: {
-        offset: 0,
-        limit: this.data.hot.length+this.data.listSize,
-        ct: this.data.city
-      },
-      success: res => {
+    let limit = this.data.hot.length + this.data.listSize;//数量
+    let city = this.data.city; //城市
+    apiMock.getFilmList(limit,city,res => {
         if(this.data.lastHotListSize === res.data.data.hot.length){  //判断请求是否还返回数据
           this.setData({
             hasHotDataMore:false
@@ -65,9 +59,10 @@ Page({
         }
         let result = res.data.data.hot;
         let hotList = this.data.hot;  
-        result.map(item => {
-          return item.img.replace('/w.h/', '/')
+         result.forEach((item) => {
+           item.img = item.img.replace('/w.h/', '/')
         })
+        
         hotList=[...hotList,...res.data.data.hot]
         let increaseNum = result.length-this.data.hot.length;   //每次请求增加多少数据
         this.setData({
@@ -76,8 +71,7 @@ Page({
           hasHotDataMore: true
         })  
         this.data.lastHotListSize+=increaseNum;
-      }
-    })
+      })
   },
 
   onReachBottom(){
@@ -132,7 +126,5 @@ Page({
       }
     })
   }
-
-  
 })
 

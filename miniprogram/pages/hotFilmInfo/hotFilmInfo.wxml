@@ -21,11 +21,11 @@
       </view>
     </view>
     <view class="filmInfo__header-btnlist">
-      <view class="header-btn">
-        <image src="../../images/wish.png"/>
-        {{filmInfo.comScorePersona?'喜欢':'想看'}}
+      <view class="header-btn" bindtap="changeWatch">
+        <image src="{{watch===-1?'../../images/wish.png':'../../images/watched.png'}}"/>
+        {{watch===-1?'想看':(watch===0?'已想看':'看过')}}
         </view>
-      <view class="header-btn">
+      <view bindtap='setScore' class="header-btn">
         <image src="../../images/score.png"/>
         评分
       </view>
@@ -72,7 +72,7 @@
       <scroll-view class="filmInfo__photos-scroll" scroll-x="true">
         <view class="filmInfo__photos-bd">
           <block wx:for="{{filmInfo.photos}}" wx:key="index" wx:for-item="item">
-            <view class="filmInfo__photo">
+            <view data-list='{{filmInfo.photos}}' data-src="{{item}}" bindtap="showPhoto" class="filmInfo__photo">
               <image src="{{item}}" mode="aspectFill"/>
             </view>
           </block>
@@ -87,7 +87,7 @@
   <view class="filmInfo__comnt">
     <view class="filmInfo__comnt-title">
       <text class="comnt-title">观众评论</text>
-      <view class="comnt-writter">写短评</view>
+      <view bindtap='setScore' class="comnt-writter">写短评</view>
     </view>
     <view class="comnt-list">
       <block wx:for="{{comnts.list}}" wx:key="item.id" wx:for-item="item">
@@ -112,7 +112,7 @@
         </view>
       </block>
     </view>
-    <view class="filmInfo__comnt-showAll">查看全部{{comnts.total}}条观众评论</view>
+    <view bindtap='setScore' class="filmInfo__comnt-showAll">查看全部{{comnts.total}}条观众评论</view>
   </view>
   <view class="buy-tict" >优惠购票</view>
 </view>
@@ -129,7 +129,7 @@
   <view class="dialog-desc">
     <text class="dialog-cname">{{actOnShow.cnm}}</text>
     <text class="dialog-ename">{{actOnShow.enm}}</text>
-    <text class="dialog-role">{{actOnShow.roles==='导演'?actOnShow.roles:'饰:'+actOnShow.roles}}</text>
+    <text class="dialog-role">{{actOnShow.roles==='导演'?actOnShow.roles:'饰:  '+actOnShow.roles}}</text>
   </view>
   <image class="dialog-img" src="{{actOnShow.still?actOnShow.still:''}}"/>
 </view>
