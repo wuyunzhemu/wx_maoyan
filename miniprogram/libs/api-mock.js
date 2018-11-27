@@ -1,3 +1,4 @@
+
 let getFilmList = exports.getFilmList = function getFilmList(limit,city, cb){
   //获取电影列表
   return wx.request({
@@ -53,5 +54,37 @@ let getComnts = exports.getComnts = function getComnts(id,cb){
       cb(res)
     },
     fail:{}
+  })
+}
+
+let getCinema = exports.getCinema = function getCinema(ctid,offset,lnt,lat,cb){
+  //获取附近电影院
+  return wx.request({
+    url: 'https://wx.maoyan.com/hostproxy/mmcs/cinema/v1/select/cinemas.json',
+    method: 'GET',
+    header: { str: 'content-type:application/json;charset=UTF-8' },
+    data: {
+      cityId:ctid,
+      limit: 12,
+      offset:offset,
+      channelId:40000,
+      lng:lnt,
+      lat:lat
+    },
+    success: res => {
+      cb(res)
+    },
+    fail: {}
+  })
+}
+
+let getCity = exports.getCity = function getCity(cb) {
+  return wx.request({
+    url: 'https://wx.maoyan.com/hostproxy/dianying/cities.json',
+    method: 'GET',
+    header: { str: 'content-type:application/json;charset=UTF-8' },
+    success: res => {
+      cb(res);
+    }
   })
 }

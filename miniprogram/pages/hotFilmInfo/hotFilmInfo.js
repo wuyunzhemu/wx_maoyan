@@ -9,11 +9,11 @@ Page({
     filmInfo:{},
     isFold:true,  //电影简介折叠状态
     actors:[],
+    showDialog: false,
+    actOnShow: {},
     comnts:{
       list:[],
       total:0,
-      showDialog:false,
-      actOnShow:{}
     },
     watch:-1   //电影状态：-1 未看 0 想看 1 已看 
   },
@@ -76,7 +76,7 @@ Page({
       let result = res.data.data.movie;
       result.img = result.img.replace('/w.h/movie', '/movie');
       result.photos = that.getRealUrl(result.photos)
-      result.sc = parseFloat(result.sc);
+      result.sc = result.sc.toFixed(1)
       // let score = that.convertStarArray(result.sc/2)
       this.setData({
         filmInfo: result,
@@ -167,6 +167,27 @@ Page({
       title: '此功能暂时不可用',
       icon:'none'
     })
+  },
+  likeComnt(e){
+    let index = e.currentTarget.dataset.index
+    let comntLike = 'comnts.list['+index+'].approved';
+    let comntLikeNum = 'comnts.list['+index+'].approve';
+    if(this.data.comnts.list[index].approved===true)
+    {
+      this.setData({
+        [comntLike]: false,
+        [comntLikeNum]: this.data.comnts.list[index].approve - 1,
+      })
+    }
+    else
+    {
+      this.setData({
+        [comntLike]: true,
+        [comntLikeNum]: this.data.comnts.list[index].approve + 1,
+      })
+
+    }
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

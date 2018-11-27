@@ -1,4 +1,5 @@
 //index.js
+
 const apiMock = require('../../libs/api-mock.js')
 const QQMapWX = require('../../libs//qqmap-wx-jssdk.js');
 const qqmap = new QQMapWX({
@@ -27,6 +28,10 @@ Page({
 
   onLoad: function() {
     // 获取用户信息
+    wx.showLoading({
+      title: '正在加载',
+      mask:true
+    })
     wx.getSetting({
       success: res => {
         if(res.authSetting['scope.userLocation']){
@@ -38,6 +43,7 @@ Page({
         this.getOnShowFilmInfo();
       }
     })
+    wx.hideLoading();
   },
   onShow: function () {
 
@@ -61,6 +67,7 @@ Page({
         let hotList = this.data.hot;  
          result.forEach((item) => {
            item.img = item.img.replace('/w.h/', '/')
+           item.mk = item.mk.toFixed(1)
         })
         
         hotList=[...hotList,...res.data.data.hot]
@@ -83,22 +90,46 @@ Page({
     //获取城市信息
     wx.getLocation({
       success: res => {
+        let lat = res.latitude,
+        lnt = res.longitude
         qqmap.reverseGeocoder({
           location: {
             latitude: res.latitude,
             longitude: res.longitude
           },
           success:res=>{
-            this.setData({
-              onShow_finishLoad: true,
-            })
             let province = res.result.ad_info.province
             let city = res.result.ad_info.city
             let district = res.result.ad_info.district
-            this.setData({
-              province: province,
-              city: city,
-              finishedLocal:true
+            city = city.substring(0,city.length-1);
+            district = district.substring(0,city-1);
+            apiMock.getCity(ctRes=>{
+            //------------------------------------------------------
+            //得到猫眼API的城市对象
+              for(let i=0;i<ctRes.data.cts.length;i++){
+                if(district ===ctRes.data.cts[i].nm){
+                  city = ctRes.data.cts[i]
+                  break;
+                }
+              }
+              if((typeof city)==='string')
+              {
+                for (let i = 0; i < ctRes.data.cts.length; i++) {
+                  if (city === ctRes.data.cts[i].nm) {
+                    city = ctRes.data.cts[i]
+                    break;
+                  }
+                }
+              }
+            //---------------------------------------------------------
+              apiMock.getCinema(city.id,0,lnt,lat,cnmRes=>{
+                console.log(cnmRes);
+              })
+              this.setData({
+                city: city,
+                finishedLocal: true
+              })
+              app.globalData.userCity = this.data.city; 
             })
           
           }
@@ -121,9 +152,6 @@ Page({
     //跳转进入影片详细信息页面
     wx.navigateTo({
       url: '../hotFilmInfo/hotFilmInfo?id='+e.currentTarget.dataset.id,
-      success:res=>{
-        console.log(res)
-      }
     })
   }
 })

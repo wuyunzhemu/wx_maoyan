@@ -104,7 +104,7 @@
             <view class="comnt-ft">
               <text class="comnt-date">{{item.date}}</text>
               <view class="comnt-like">
-                <image class="comnt-like-img" src="../../images/ass.png"/>
+                <image bindtap='likeComnt' data-index="{{index}}" class="comnt-like-img" src="{{!item.approved?'../../images/ass.png':'../../images/hasAss.png'}}"/>
                 <text class="comnt-like-num">{{item.approve}}</text>
               </view>
             </view>

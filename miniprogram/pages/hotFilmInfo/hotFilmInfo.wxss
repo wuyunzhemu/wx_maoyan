@@ -403,9 +403,14 @@ page,.container{
 
 .comnt-like-img{
   position: relative;
-  top:8rpx;
-  height:40rpx;
-  width:40rpx;
+  top:3rpx;
+  right:4rpx;
+  height:30rpx;
+  width:30rpx;
+}
+
+.comnt-like-img:active{
+  
 }
 
 .comnt-like-num{

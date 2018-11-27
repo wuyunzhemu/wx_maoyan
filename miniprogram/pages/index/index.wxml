@@ -3,7 +3,7 @@
     <view class="location" bindtap="">
       <span class="local">
       <span class="{{finishedLocal?'hidden':''}}">正在定位</span>
-        {{city}}
+        {{city.nm}}
       </span>
       <i class="down-arrow"></i>
     </view>
@@ -14,7 +14,6 @@
     <view class="search" bandtap=""><image src="../../images/icon-search.png"></image></view>
   </view>
   <view class="page_body">
-  <page_loading class="{{onShow_finishLoad?'hidden':''}}"></page_loading>
     <scroll-view class="onShow_body {{onShow_selected?'':'hidden'}}">
       <block wx:for="{{hot}}" wx:key="{{item.id}}">
         <van-card
