@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "cnm-icons":"../cnm-icon/cnm-icon",
+    "tag":"../cnm-tag/cnm-tag"
+  }
+}

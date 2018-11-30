@@ -1,0 +1,34 @@
+/* components/cnm-tag/cnm-tag.wxss */
+.tags{
+  margin-top:20rpx;
+  width: 80%;
+  font-size:26rpx;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+
+.tag{
+  padding-left:4rpx;
+  padding-right:4rpx;
+  height:34rpx;
+  color:white;
+  border-radius: 5rpx;
+}
+.type-cardPromotionTag{
+  background-color: #a97be0;
+
+}
+
+.type-merchantActivityTag  {
+  background-color: #ff7979;
+}
+
+.type-platformActivityTag{
+  background-color: #ff9900;
+}
+
+.tag-desc{
+  margin-left:10rpx;
+  color:#aeaeae;
+}

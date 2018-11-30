@@ -103,9 +103,10 @@
             <view class="comnt-bd">{{item.content}}</view>
             <view class="comnt-ft">
               <text class="comnt-date">{{item.date}}</text>
-              <view class="comnt-like">
-                <image bindtap='likeComnt' data-index="{{index}}" class="comnt-like-img" src="{{!item.approved?'../../images/ass.png':'../../images/hasAss.png'}}"/>
+              <view bindtap='likeComnt' data-index="{{index}}" class="comnt-like">
+                <image class="comnt-like-img" src="{{!item.approved?'../../images/ass.png':'../../images/hasAss.png'}}"/>
                 <text class="comnt-like-num">{{item.approve}}</text>
+                <text class="showAddcount {{item.approved?'showAddcount-on':''}}" bindanimationend="transitionEnd">+1</text>
               </view>
             </view>
           </view>

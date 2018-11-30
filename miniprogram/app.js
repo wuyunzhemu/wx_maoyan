@@ -11,7 +11,9 @@ App({
     }
 
     this.globalData = {
-      userCity:''
+      userCity:'',
+      lnt:0,
+      lat:0
     }
   }
 })

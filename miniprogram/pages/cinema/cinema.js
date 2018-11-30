@@ -1,18 +1,28 @@
 // miniprogram/pages/movie/movie.js
+import apiMock from '../../libs/api-mock.js'
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    cinemaList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function () {
+    let city = app.globalData.userCity;
+    let lnt = app.globalData.lnt;
+    let lat = app.globalData.lat;
+    apiMock.getCinema(city.id, 0, lnt, lat, cnmRes => {
+      let cinemaList = cnmRes.data.data.cinemas
+      this.setData({
+        cinemaList:cinemaList
+      })
+    })
   },
 
   /**
@@ -47,7 +57,15 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    let city = app.globalData.userCity;
+    let lnt = app.globalData.lnt;
+    let lat = app.globalData.lat;
+    apiMock.getCinema(city.id, 0, lnt, lat, cnmRes => {
+      let cinemaList = cnmRes.data.data.cinemas
+      this.setData({
+        cinemaList: cinemaList
+      })
+    })
   },
 
   /**

@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isLiked:false,
+    likeAnmFin:false,
     filmInfo:{},
     isFold:true,  //电影简介折叠状态
     actors:[],
@@ -68,6 +70,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '正在加载',
+      mask:true
+    })
     let that = this;
     let id = options.id
     apiMock.getFilmDetail(id,res=>{
@@ -117,6 +123,7 @@ Page({
        'comnts.total': comntRes.data.total
      })
    })
+   wx.hideLoading();
   },
   showPhoto(e){
     //点击图片大图预览
@@ -182,12 +189,18 @@ Page({
     else
     {
       this.setData({
+        isLiked:true,
         [comntLike]: true,
         [comntLikeNum]: this.data.comnts.list[index].approve + 1,
       })
 
     }
     
+  },
+  transitionEnd(){
+    this.setData({
+      isLiked:false
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

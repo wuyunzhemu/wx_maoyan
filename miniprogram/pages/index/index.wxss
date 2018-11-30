@@ -27,7 +27,7 @@
 }
 
 .subnav .location{
-  width:25%;
+  width:17%;
   text-align: center;
   font-size:24rpx;
 }
@@ -88,7 +88,7 @@ border-right-color: transparent;
   display: block;
   color:grey;
   margin-top:12rpx;
-  font-size: 24rpx;
+  font-size: 26rpx;
   width:400rpx;
 }
 .filmInfo span.showInfo{
@@ -96,7 +96,7 @@ border-right-color: transparent;
 }
 
 .page_body .van-card{
-  margin:10rpx 15rpx 0rpx 15rpx;
+  margin:10rpx 15rpx 0rpx 0rpx;
   padding-right: 0;
   padding-left:180rpx;
   border-bottom: 1px solid #f6f6f6;
@@ -109,7 +109,12 @@ border-right-color: transparent;
 }
 
 .page_body .van-card__title{
-  font-size:30rpx;
+  display: inline-block;
+  font-size:34rpx;
+  max-width:400rpx;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow:ellipsis; 
 }
 .page_body .van-card__img{
   width:130rpx;

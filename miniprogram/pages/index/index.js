@@ -75,7 +75,7 @@ Page({
         this.setData({
           hot: result,
           onShow_finishLoad: true,
-          hasHotDataMore: true
+          hasHotDataMore: true,
         })  
         this.data.lastHotListSize+=increaseNum;
       })
@@ -122,13 +122,13 @@ Page({
                 }
               }
             //---------------------------------------------------------
-              apiMock.getCinema(city.id,0,lnt,lat,cnmRes=>{
-                console.log(cnmRes);
-              })
+             
               this.setData({
                 city: city,
                 finishedLocal: true
               })
+              app.globalData.lnt = lnt;
+              app.globalData.lat = lat;
               app.globalData.userCity = this.data.city; 
             })
           

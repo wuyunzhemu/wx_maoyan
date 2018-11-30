@@ -2,12 +2,9 @@
   "cloud": true,
   "pages": [
     "pages/index/index",
-    "pages/hotFilmInfo/hotFilmInfo",
-
     "pages/cinema/cinema",
-    "pages/mine/mine",
-    "components/loading/loading"
-
+    "pages/hotFilmInfo/hotFilmInfo",
+    "pages/mine/mine"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

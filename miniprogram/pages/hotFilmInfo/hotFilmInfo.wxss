@@ -2,14 +2,14 @@
 view{
   box-sizing: border-box;
 }
-.hidden{
-  display: none!important;
-}
-
 .space{
   display: block;
   width:30rpx;
   height:100%;
+}
+
+.hidden{
+  display: none !important;
 }
 
 page,.container{
@@ -401,6 +401,11 @@ page,.container{
   color:#999999;
 }
 
+.comnt-like{
+  position:relative;
+  left:50rpx;
+}
+
 .comnt-like-img{
   position: relative;
   top:3rpx;
@@ -409,9 +414,7 @@ page,.container{
   width:30rpx;
 }
 
-.comnt-like-img:active{
-  
-}
+
 
 .comnt-like-num{
   font-size: 22rpx;
@@ -469,4 +472,28 @@ page,.container{
   height:150rpx;
   width:150rpx;
   border-radius: 50%;
+}
+
+
+.showAddcount{
+  position: relative;
+  right:50rpx;
+  display: inline-block;
+  width: 50rpx;
+  height: 50rpx;
+  color: red;
+  transform: scale(0);
+  font-weight: 300;
+}
+.showAddcount-on{
+  animation: showLike .5s  ease-out 
+}
+
+@keyframes showLike{
+  0%{
+    transform: scale(0) translateY(0);
+  }
+  100%{
+    transform: scale(2) translateY(-20rpx)
+  }
 }

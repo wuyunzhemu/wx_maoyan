@@ -1,0 +1,5 @@
+
+  <view class="tags">
+    <i class="tag type-{{type}}">{{char}}</i>
+    <text class="tag-desc">{{desc}}</text>
+  </view>

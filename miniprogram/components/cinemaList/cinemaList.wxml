@@ -1,0 +1,24 @@
+<!--components/cinemaList/cinemaList.wxml-->
+  <block wx:for="{{cinemaList}}" wx:key="index" wx:fot-item="item">
+    <view class="cinema-item">
+      <view class="cinema-title">
+        <text class="cinema-name">{{item.nm}}</text>
+        <text class="cinema-price">{{item.price}}
+        </text><text class="dex"><text class="price-des">元起</text></text>
+      </view>
+      <view class="cinema-address">
+        <text class="cinema-addr">{{item.addr}}</text>
+        <text class="cinema-dist">{{item.distance}}</text>
+      </view>
+      <view class="cinema-icons">
+        <block wx:for="{{item.labels}}" wx:key="index" wx:for-item="item">
+          <cnm-icons name="{{item.name}}" color="{{item.color}}"></cnm-icons>
+        </block>
+      </view>
+      <view class="cinema-act-tag">
+        <block wx:for="{{item.promotion}}" wx:for-index='key' wx:key="index" wx:for-item="item">
+          <tag type="{{key}}" desc="{{item}}"></tag>
+        </block>
+      </view>
+    </view>
+  </block>

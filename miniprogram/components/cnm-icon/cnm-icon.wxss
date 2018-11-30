@@ -1,0 +1,11 @@
+/* components/cnm-icon/cnm-icon.wxss */
+
+.cnm-icon-item{
+  padding-left:4rpx;
+  padding-right:4rpx;
+  font-size: 22rpx;
+  border:2rpx solid;
+  border-radius: 5rpx;
+  margin-right:8rpx;
+  box-sizing: border-box;
+}

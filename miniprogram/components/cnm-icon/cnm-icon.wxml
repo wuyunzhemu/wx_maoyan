@@ -1,0 +1,5 @@
+
+    <view class="cnm-icon-item" style="background:white;color:{{color}};border-color:{{color}}">
+      {{name}}
+    </view>
+
