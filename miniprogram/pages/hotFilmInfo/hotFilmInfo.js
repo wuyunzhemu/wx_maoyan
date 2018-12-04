@@ -111,7 +111,6 @@ Page({
         
    apiMock.getComnts(id,comntRes=>{
     //  得到热评信息
-     console.log(comntRes);
      let comnts = [];
      for (let i = 0; i < 3; i++) {
        // comntRes.data.hcmts[i].starArr =that.convertStarArray( comntRes.data.hcmts[i].score)

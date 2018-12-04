@@ -1,2 +1,5 @@
-<!--components/location/location.wxml-->
-<text>components/location/location.wxml</text>
+
+<span class="local">
+  {{city}}
+</span>
+<i class="down-arrow"></i>

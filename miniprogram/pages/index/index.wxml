@@ -1,11 +1,7 @@
 <view class="container">
   <view class="subnav">
-    <view class="location" bindtap="">
-      <span class="local">
-      <span class="{{finishedLocal?'hidden':''}}">正在定位</span>
-        {{city.nm}}
-      </span>
-      <i class="down-arrow"></i>
+    <view class = "loc">
+      <city city="{{finishedLocal?city.nm:'正在定位...'}}"></city>
     </view>
     <view class="title">
       <view class="onShow {{onShow_selected?'select':''}}" bindtap='changeSelect' data-onshow="{{isOnShow}}">热映</view>
@@ -41,7 +37,7 @@
           </view>
         </van-card>
       </block>
-      <view class="data_getMore {{hasHotDataMore?'':'hidden'}}">加载更多...</view>
+      <view bindtap='getOnShowFilmInfo' class="data_getMore {{hasHotDataMore?'':'hidden'}}">加载更多...</view>
     </scroll-view>
     <view class="willShow_body {{onShow_selected?'hidden':''}}">
       这里是即将上映

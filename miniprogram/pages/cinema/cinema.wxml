@@ -1,1 +1,9 @@
-<cinema cinemaList="{{cinemaList}}"></cinema>
+<view class="subnav">
+    <city city="{{city}}"></city>
+    <view class="header-search">
+      <image src='../../images/search.png' />
+      <text>找影院</text>
+    </view>
+</view>
+<cinema bindscrolltolower="onReachBottom" cinemaList="{{cinemaList}}"></cinema>
+<view bindtap='getCinema' class="data_getMore {{hasMoreCinema?'':'hidden'}}">加载更多...</view>

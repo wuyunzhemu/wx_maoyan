@@ -5,6 +5,7 @@
     "van-row":"../../vant-weapp/row/index",
     "van-col":"../../vant-weapp/col/index",
     "van-card":"../../vant-weapp/card/index",
-    "btn":"../../components/button/button"
+    "btn":"../../components/button/button",
+    "city":"../../components/location/location"
   }
 }

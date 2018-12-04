@@ -13,21 +13,17 @@ const app = getApp()
 Page({
   data: {
     finishedLocal:false,    //是否完成定位
-    avatarUrl: './user-unlogin.png',
-    userInfo: {},
     city:'',    //当前城市
     onShow_selected:true,    //导航是否选中热映
     isOnShow:true,     //该元素是否为热映元素
     hot:[],        //热映电影列表
     onShow_finishLoad:false,    //是否加载完成
-    listSize:12,    //单页电影数
     lastHotListSize:0,
     hasHotDataMore:false, //是否还有数据
-    nowTime:new Date().getTime()
+    nowTime:new Date().getTime() //当前时间 判断电影是否已经上映
   },
 
   onLoad: function() {
-    // 获取用户信息
     wx.showLoading({
       title: '正在加载',
       mask:true
@@ -54,15 +50,10 @@ Page({
 
   getOnShowFilmInfo:function(){    
     //获取热映影片基础信息
-    let limit = this.data.hot.length + this.data.listSize;//数量
+    //数量
     let city = this.data.city; //城市
-    apiMock.getFilmList(limit,city,res => {
-        if(this.data.lastHotListSize === res.data.data.hot.length){  //判断请求是否还返回数据
-          this.setData({
-            hasHotDataMore:false
-          })
-          return;
-        }
+    let offset = this.data.hot.length;
+    apiMock.getFilmList(offset,city,res => {
         let result = res.data.data.hot;
         let hotList = this.data.hot;  
          result.forEach((item) => {
@@ -71,19 +62,19 @@ Page({
         })
         
         hotList=[...hotList,...res.data.data.hot]
-        let increaseNum = result.length-this.data.hot.length;   //每次请求增加多少数据
         this.setData({
-          hot: result,
-          onShow_finishLoad: true,
-          hasHotDataMore: true,
+          hot: hotList,
+          hasHotDataMore: res.data.data.paging.hasMore,
         })  
-        this.data.lastHotListSize+=increaseNum;
       })
   },
 
   onReachBottom(){
     //触底新增列表 
-    this.getOnShowFilmInfo();
+    if(this.data.hasHotDataMore){
+      this.getOnShowFilmInfo();
+    }
+    
   },
 
   getCity:function(){

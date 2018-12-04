@@ -1,1 +1,19 @@
 /* components/location/location.wxss */
+.local{
+  margin-left:35rpx;
+  display: inline-block;
+  font-size:24rpx;
+}
+
+.down-arrow{
+margin-left:10rpx;
+font-size: 0;
+line-height: 0;
+border-width: 10rpx;
+border-color:#d0d0d0;
+border-bottom-width: 0;
+border-style: dashed;
+border-top-style: solid;
+border-left-color: transparent;
+border-right-color: transparent;
+}

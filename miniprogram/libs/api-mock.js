@@ -1,16 +1,17 @@
 
-let getFilmList = exports.getFilmList = function getFilmList(limit,city, cb){
+let getFilmList = exports.getFilmList = function getFilmList(offset,city, cb){
   //获取电影列表
   return wx.request({
     url: 'https://wx.maoyan.com/mmdb/movie/v2/list/hot.json',
     method: 'GET',
     header: { str: 'content-type:application/json;charset=UTF-8' },
     data: {
-      offset: 0,
-      limit:limit,
+      offset: offset,
+      limit:12,
       ct:city,
     },
     success:res=>{
+      console.log(res);
       cb(res)
     }
   })
@@ -72,6 +73,7 @@ let getCinema = exports.getCinema = function getCinema(ctid,offset,lnt,lat,cb){
       lat:lat
     },
     success: res => {
+      console.log(res)
       cb(res)
     },
     fail: {}
