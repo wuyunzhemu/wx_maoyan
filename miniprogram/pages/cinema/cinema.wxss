@@ -20,6 +20,7 @@
   height:80rpx;
   width:750rpx;
   border-bottom: 1px solid #f0f0f0;
+  border-top: 1px solid #f0f0f0;
   line-height: 90rpx;
   font-size:28rpx;
   flex-direction: row;

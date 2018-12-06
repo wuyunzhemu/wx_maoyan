@@ -147,15 +147,41 @@ Page({
     //从时间字符串得到日期
     str = str.replace(/-/g,'/');
     let dateObj = new Date(str);
+    let year = dateObj.getFullYear()
+    let nowYear = new Date().getFullYear();
     let month = dateObj.getMonth() + 1;
+    let nowMonth = new Date().getMonth()+1;
     let day = dateObj.getDate();
+    let nowDay = new Date().getDate();
+    let hours = dateObj.getHours()
+    let nowHours = new Date().getHours();
+    let date='';
     if(month >0 && month <10){
       month = '0'+month
     }
     if(day>0 && day<10){
       day = '0'+day
     }
-    let date = month + '-' +day;
+    if(nowYear-year >=1)
+    {
+       date = year+'-'+month+'-'+day;
+      
+    }
+    else if(nowMonth - month>=1)
+    {
+       date = month + '-' + day;
+    }
+    else if(nowDay-day >=7){
+      let tmonth = parseInt((nowDay-day)/7);
+       date = tmonth + '周前'
+    }
+    else if(nowDay - day >=1){
+       date = (nowDay-day)+'天前'
+    }
+    else {
+       date = (nowHours-hours)+'小时前'
+    }
+    
     return date;
   },
 
@@ -199,6 +225,12 @@ Page({
   transitionEnd(){
     this.setData({
       isLiked:false
+    })
+  },
+  toSelCinema:function(){
+    let film = JSON.stringify(this.data.filmInfo)
+    wx.navigateTo({
+      url: '../selectCinema/selCinema?film='+film,
     })
   },
   /**

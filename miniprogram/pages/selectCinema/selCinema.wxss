@@ -1,0 +1,41 @@
+/* miniprogram/pages/selectCinema/selCinema.wxss */
+.hidden{
+  display: none !important;
+  z-index: -999;
+}
+
+.data_getMore{
+  height:60rpx;
+  font-size: 26rpx;
+  text-align: center;
+  padding-top:20rpx;
+  color:#aaa;
+  background-color:#f8f8f8;
+}
+.data_getMore:active{
+  background-color:#f0f0f0;
+}
+
+.header-title{
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+.date-scroll{
+  width:100%;
+  border-bottom:1rpx solid #e4e4e4
+}
+
+.date-item{
+  display: inline-block;
+  height:90rpx;
+  width:200rpx;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.select{
+  border-bottom: 4rpx solid #ef4238;
+  color:#ef4238;
+}

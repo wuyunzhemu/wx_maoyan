@@ -216,7 +216,6 @@ page,.container{
 .filmInfo__act-actInfo,.filmInfo__photos-bd
 {
   height:100%;
-  width:120%;
   display: flex;
   flex-direction: row;
   padding-left: 30rpx;
@@ -496,4 +495,11 @@ page,.container{
   100%{
     transform: scale(2) translateY(-20rpx)
   }
+}
+
+.noscore{
+  font-size:24rpx;
+  color:#aaa;
+  position: relative;
+  bottom:12rpx;
 }

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "{{film.nm}}",
+  "usingComponents":{
+    "cinema": "../../components/cinemaList/cinemaList"
+  }
+}

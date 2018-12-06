@@ -98,7 +98,8 @@
           <view class="comnt-detail">
             <view class="comnt_hd">
               <text class="comnt_hd-userName">{{item.nickName}}</text>
-              <star size="mini" score="{{item.score}}"></star>
+              <text class="{{item.score==0?'noscore':'hidden'}}">未评分</text>
+              <star class="{{item.score==0?'hidden':''}}" size="mini" score="{{item.score}}"></star>
             </view>
             <view class="comnt-bd">{{item.content}}</view>
             <view class="comnt-ft">
@@ -115,7 +116,7 @@
     </view>
     <view bindtap='setScore' class="filmInfo__comnt-showAll">查看全部{{comnts.total}}条观众评论</view>
   </view>
-  <view class="buy-tict" >优惠购票</view>
+  <view bindtap='toSelCinema' class="buy-tict" >优惠购票</view>
 </view>
 
 <!-- 弹出框 -->
@@ -130,7 +131,7 @@
   <view class="dialog-desc">
     <text class="dialog-cname">{{actOnShow.cnm}}</text>
     <text class="dialog-ename">{{actOnShow.enm}}</text>
-    <text class="dialog-role">{{actOnShow.roles==='导演'?actOnShow.roles:'饰:  '+actOnShow.roles}}</text>
+    <text class="dialog-role">{{actOnShow.roles==='导演'?actOnShow.roles:(actOnShow.roles==='演员'?'':'饰:  '+actOnShow.roles)}}</text>
   </view>
   <image class="dialog-img" src="{{actOnShow.still?actOnShow.still:''}}"/>
 </view>
