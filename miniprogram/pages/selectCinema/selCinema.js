@@ -20,7 +20,7 @@ Page({
   getCinema(){
     //得到影院列表
     let city = app.globalData.userCity,
-    movieId = this.data.film.id,
+    movieId = this.data.film,
     lnt = app.globalData.lnt,
     lat = app.globalData.lat,
     date = this.data.reqDate,
@@ -45,11 +45,19 @@ Page({
     }
     let pgDateArr=[]
     pgDateArr[0] ='今天'+ parseInt(dateArr[0].getMonth()+1)+'月'+ dateArr[0].getDate()+'日'
-    pgDateArr[1] = '明天' + parseInt(dateArr[1].getMonth()+1) + '月' + dateArr[1].getDate() + '日'
-    pgDateArr[2] = "周"+"日一二三四五六".charAt(dateArr[2].getDay()) + parseInt(dateArr[2].getMonth()+1) + '月' + dateArr[2].getDate()+'日'
-    pgDateArr[3] = "周" + "日一二三四五六".charAt(dateArr[3].getDay()) + parseInt(dateArr[3].getMonth()+1) + '月' + dateArr[3].getDate() + '日'
-    for(let j=4; j<8;j++){
-      pgDateArr[j] = dateArr[j].getMonth()+1 + '月' + dateArr[j].getDate() + '日'
+    for(let j=1; j<7;j++){
+      if(dateArr[j].getDay() == 6){
+        pgDateArr[j] ='周六' +parseInt(dateArr[j].getMonth() + 1) + '月' + dateArr[j].getDate() + '日'
+      }
+      else if (dateArr[j].getDay() == 0){
+        pgDateArr[j] = '周日' + parseInt(dateArr[j].getMonth() + 1) + '月' + dateArr[j].getDate() + '日'
+      }
+      else if(j==1){
+        pgDateArr[j] ='明天'+ dateArr[j].getMonth() + 1 + '月' + dateArr[j].getDate() + '日'
+      }
+      else{
+        pgDateArr[j] = dateArr[j].getMonth() + 1 + '月' + dateArr[j].getDate() + '日'
+      }
     }
     dateArr = dateArr.map((item)=>{
       return item.getFullYear()+'-'+parseInt(item.getMonth()+1)+'-'+item.getDate()
@@ -73,6 +81,14 @@ Page({
     this.getCinema();
   },
 
+  toBuyTic:function(e){
+    let cinema = JSON.stringify(e.detail.cinema);
+    let movieId = this.data.film;
+    let date = this.data.pgDateArr[this.data.selIndex]
+    wx.navigateTo({
+      url: '../selTime/selTime?cinema='+cinema+'&&movieId='+movieId+'&&date='+date,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -83,7 +99,7 @@ Page({
       title: film.nm
     })
     this.setData({
-      film:film
+      film:film.id
     })
     this.getCinema(this.data.dateArr[0]);
   },

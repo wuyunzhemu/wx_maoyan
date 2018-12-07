@@ -5,5 +5,5 @@
       </block>
   </scroll-view>
 </view>
-<cinema bindscrolltolower="onReachBottom" cinemaList="{{cnmList}}"></cinema>
+<cinema bindtoBuyTic="toBuyTic" bindscrolltolower="onReachBottom" cinemaList="{{cnmList}}"></cinema>
 <view bindtap='getCinema' class="data_getMore {{hasMoreCinema?'':'hidden'}}">加载更多...</view>

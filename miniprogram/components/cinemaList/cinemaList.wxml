@@ -1,6 +1,6 @@
 <!--components/cinemaList/cinemaList.wxml-->
   <block wx:for="{{cinemaList}}" wx:key="index" wx:fot-item="item">
-    <view class="cinema-item">
+    <view bindtap='toBuyTic' data-item="{{item}}" class="cinema-item">
       <view class="cinema-title">
         <text class="cinema-name">{{item.nm}}</text>
         <text class="cinema-price">{{item.price}}

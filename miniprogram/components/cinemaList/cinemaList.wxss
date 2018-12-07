@@ -4,6 +4,10 @@
   border-bottom: 1rpx solid #f0f0f0;
 }
 
+.cinema-item:active{
+  background-color: #f0f0f0
+}
+
 .cinema-title{
 }
 .cinema-name{

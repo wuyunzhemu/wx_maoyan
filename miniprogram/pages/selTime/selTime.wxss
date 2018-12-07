@@ -1,0 +1,102 @@
+/* miniprogram/pages/selTime/selTime.wxss */
+.header__cnmtitle{
+  padding-right:18rpx;
+  padding-left:30rpx;
+  display: flex;
+  height:130rpx;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom:1rpx solid #f0f0f0;
+  background: white;
+  
+}
+
+.cnmtitle-info{
+  display: inline-block;
+  width:600rpx;
+}
+.cnmtitle-info text{
+  display: block;
+  text-overflow: hidden;
+}
+
+.cinema-nm{
+  font-size: 32rpx;
+}
+
+.cinema-addr{
+  font-size: 24rpx;
+  color:#9b9b9b;
+}
+
+.headertitle__map{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width:60rpx;
+  border-left:1rpx solid #e5e5e5;
+  padding-left:26rpx;
+  height:50rpx;
+}
+
+.headertitle__map image{
+  padding-left:4rpx;
+  width:38rpx;
+  height:38rpx;
+  overflow: visible;
+  
+}
+
+.headertitle__map text{
+  margin-top:12rpx;
+  display: block;
+  font-size:24rpx;
+  color:#ababab;
+}
+
+.post-item{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width:75% !important;
+  overflow: unset;
+  bottom:20rpx;
+}
+
+.post-item image{
+  height:225rpx;
+  width:165rpx;
+  
+  box-sizing: border-box;
+}
+
+.swiper-bg{
+  position:absolute;
+  width:120%;
+  height:100%;
+  padding-left:200rpx;
+  overflow: hidden;
+  top:-200rpx;
+  z-index: -999;
+  filter: blur(30rpx) brightness(0.6);
+  left:-200rpx;
+}
+
+.select{
+transform: scale(1.15);
+border:1rpx solid white;
+transition:all .2s ease-in 0s;
+}
+
+.movie-swiper{
+  overflow: hidden;
+  height:320rpx;
+}
+
+.film-info{
+  height:800rpx;
+  width:100%;
+  background: white;
+}

@@ -22,6 +22,9 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    toBuyTic: function (e) {
+      let cinema = e.currentTarget.dataset.item;
+      this.triggerEvent('toBuyTic', {cinema},{})
+    }
   }
 })

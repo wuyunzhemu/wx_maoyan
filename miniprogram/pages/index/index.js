@@ -50,14 +50,13 @@ Page({
 
   getOnShowFilmInfo:function(){    
     //获取热映影片基础信息
-    //数量
     let city = this.data.city; //城市
     let offset = this.data.hot.length;
     apiMock.getFilmList(offset,city,res => {
         let result = res.data.data.hot;
         let hotList = this.data.hot;  
          result.forEach((item) => {
-           item.img = item.img.replace('/w.h/', '/')
+           item.img = item.img.replace('/w.h/', '/') //得到正确图片路径
            item.mk = item.mk.toFixed(1)
         })
         

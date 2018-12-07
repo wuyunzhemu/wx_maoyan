@@ -1,0 +1,25 @@
+<view class="header__cnmtitle">
+  <view class="cnmtitle-info">
+    <text class="cinema-nm">{{cinema.nm}}</text>
+    <text class="cinema-addr">{{cinema.addr}}</text>
+  </view>
+  <view class="headertitle__map">
+    <image src = "../../images/map.png"/>
+    <text class="mapspan">地图</text>
+  </view>
+</view>
+<view class="swiper-bg" style="background-image:url({{movies[0].img}}">
+</view>
+<swiper class="movie-swiper" previous-margin="250rpx" next-margin="250rpx" display-multiple-items="1" >
+
+  <block wx:for="{{movies}}" wx:key="index" wx:for-item="item">
+  
+    <swiper-item class="post-item " item-id="{{index}}">
+      <image class="{{selIndex==index?'select':''}}"  src="{{item.img}}"/>
+    </swiper-item>
+  
+  </block>
+  </swiper>
+<view class="film-info">
+</view>
+

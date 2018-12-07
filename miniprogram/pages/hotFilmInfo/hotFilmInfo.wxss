@@ -38,9 +38,12 @@ page,.container{
 }
 
 .filmInfo__header_bg{
+  position: relative;
+  right:40rpx;
+  bottom:40rpx;
   filter: blur(30rpx) brightness(0.6);
-  width: 105%;
-  height:105%;
+  width: 120%;
+  height:120%;
   overflow: hidden;
 }
 
@@ -131,7 +134,7 @@ page,.container{
 .header-btn{
   margin-left: 25rpx;
   position: relative;
-  bottom: 100rpx;
+  bottom: 170rpx;
   width:45%;
   height:55rpx;
   color:#f9f9f9;

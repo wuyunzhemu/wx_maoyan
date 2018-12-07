@@ -111,23 +111,23 @@ let selCinema = exports.selCinema = function selCinema(ctid,movieId,showDate, of
     success: res => {
       console.log(res)
       cb(res)
-
     },
     fail: {}
   })
 }
 
-let filmTict= exports.filmTict = function filmTict(cinemaId,cb){
+let getFilmTict= exports.getFilmTict = function getFilmTict(cinemaId,cb){
   //得到某电影院内购票详细信息
   return wx.request({
-    url: 'https://wx.maoyan.com/hostproxy/mmcs/show/v2/cinema/shows.json?&ci=1&uuid=1208282&channelId=40000',
+    url: 'https://wx.maoyan.com/hostproxy/mmcs/show/v2/cinema/shows.json?&ci=1&uuid=1A6E888B4A4B29B16FBA1299108DBE9CB5DDAD04E576252F3EF59E17E75DF01E&channelId=40000',
     method: 'GET',
     header: { str: 'content-type:application/json;charset=UTF-8' },
     data: {
-      cinemaId: res.data.data.cinemas[0].id
+      cinemaId: cinemaId
     },
-    success: res2 => {
-      console.log(res2);
-    }
+    success: res=>{
+      cb(res)
+    },
+    fail:{}
   })
 }

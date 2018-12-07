@@ -35,6 +35,7 @@
   font-size: 28rpx;
 }
 
+
 .select{
   border-bottom: 4rpx solid #ef4238;
   color:#ef4238;

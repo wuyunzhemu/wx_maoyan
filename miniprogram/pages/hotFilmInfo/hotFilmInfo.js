@@ -17,7 +17,8 @@ Page({
       list:[],
       total:0,
     },
-    watch:-1   //电影状态：-1 未看 0 想看 1 已看 
+    watch:-1,   //电影状态：-1 未看 0 想看 1 已看 
+
   },
 
   changeWatch(){

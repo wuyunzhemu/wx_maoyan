@@ -33,7 +33,7 @@
             <span class="van-ellipsis">{{item.cat}}</span>
             <span class="van-ellipsis">{{item.desc}}</span>
             <span class="van-ellipsis showInfo">{{item.showInfo}}</span>
-            <btn class="btn_buyTic" type="{{item.pubDate>nowTime?'preSell':'buyTic'}}"></btn>
+            <btn class="btn_buyTic" type="{{item.pubDate>nowTime?'preSell':'buyTic'}}" text="{{item.pubDate>nowTime?'预售':'购买'}}"></btn>
           </view>
         </van-card>
       </block>

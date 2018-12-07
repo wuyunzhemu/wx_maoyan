@@ -5,7 +5,8 @@
     "pages/cinema/cinema",
     "pages/hotFilmInfo/hotFilmInfo",
     "pages/mine/mine",
-    "pages/selectCinema/selCinema"
+    "pages/selectCinema/selCinema",
+    "pages/selTime/selTime"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -6,9 +6,14 @@ Component({
   properties: {
     
     type:{
-      type:'String',
+      type:String,
+      value:''
+    },
+    text:{
+      type:String,
       value:''
     }
+
   },
 
   /**
