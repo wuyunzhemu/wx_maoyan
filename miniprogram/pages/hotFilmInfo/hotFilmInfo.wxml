@@ -9,9 +9,9 @@
         <text class="filmInfo_name">{{filmInfo.nm}}</text>
         <text class="filmInfo_enm">{{filmInfo.enm}}</text>
         <text class=" {{filmInfo.comScorePersona?'hidden':'filmInfo__wish'}}">{{filmInfo.wish}}人想看</text>
-        <view class="filmInfo__score">
-          <star size="normal" score="{{filmInfo.sc/2}}"></star>
-          <text class=" {{filmInfo.comScorePersona?'filmInfo__sc':'hidden'}}">{{filmInfo.sc}}</text>
+        <view class="{{filmInfo.comScorePersona?'filmInfo__score':'hidden'}}">
+          <star class="{{filmInfo.sc==0?'hidden':''}}" size="normal" score="{{filmInfo.sc/2}}"></star>
+          <text class="filmInfo__sc">{{filmInfo.sc==0?'暂无评分':filmInfo.sc}}</text>
         </view>
         <view class="filmInfo_desc-detail">
           <text class="filmInfo__desc_cat">{{filmInfo.cat}}</text>

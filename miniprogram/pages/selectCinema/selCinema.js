@@ -53,7 +53,7 @@ Page({
         pgDateArr[j] = '周日' + parseInt(dateArr[j].getMonth() + 1) + '月' + dateArr[j].getDate() + '日'
       }
       else if(j==1){
-        pgDateArr[j] ='明天'+ dateArr[j].getMonth() + 1 + '月' + dateArr[j].getDate() + '日'
+        pgDateArr[j] ='明天'+ parseInt(dateArr[j].getMonth() + 1) + '月' + dateArr[j].getDate() + '日'
       }
       else{
         pgDateArr[j] = dateArr[j].getMonth() + 1 + '月' + dateArr[j].getDate() + '日'
@@ -84,7 +84,7 @@ Page({
   toBuyTic:function(e){
     let cinema = JSON.stringify(e.detail.cinema);
     let movieId = this.data.film;
-    let date = this.data.pgDateArr[this.data.selIndex]
+    let date = this.data.reqDate;
     wx.navigateTo({
       url: '../selTime/selTime?cinema='+cinema+'&&movieId='+movieId+'&&date='+date,
     })

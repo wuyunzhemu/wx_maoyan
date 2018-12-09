@@ -109,7 +109,6 @@ page,.container{
 
 .filmInfo__sc{
   display: inline-block !important;
-  width:60rpx;
   text-align: center;
 }
 

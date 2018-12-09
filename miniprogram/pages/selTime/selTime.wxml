@@ -8,18 +8,28 @@
     <text class="mapspan">地图</text>
   </view>
 </view>
-<view class="swiper-bg" style="background-image:url({{movies[0].img}}">
+<view class="swiper-bg" style="background-image:url({{movies[selIndex].img}}">
 </view>
-<swiper class="movie-swiper" previous-margin="250rpx" next-margin="250rpx" display-multiple-items="1" >
-
+<swiper current="{{selIndex}}"  bindchange='changeMovie' class="movie-swiper" previous-margin="305rpx" next-margin="250rpx" display-multiple-items="1" >
   <block wx:for="{{movies}}" wx:key="index" wx:for-item="item">
-  
     <swiper-item class="post-item " item-id="{{index}}">
       <image class="{{selIndex==index?'select':''}}"  src="{{item.img}}"/>
     </swiper-item>
-  
   </block>
-  </swiper>
+</swiper>
 <view class="film-info">
+  <view class="film-desc">
+    <view class="film-desc-title">
+      <text class="film-nm">{{movies[selIndex].nm}}</text>
+      <text class="film-sc">{{movies[selIndex].sc==0?movies[selIndex].wish:movies[selIndex].sc}}</text>
+      <text class="film-sc-span">{{movies[selIndex].sc==0?'人想看':'分'}}</text>
+    </view>
+    <view class="film-desc-detail">
+      <text class='film-detail'>{{movies[selIndex].desc}}</text>
+    </view>
+  </view>
+  <view class="film-date">
+    
+  </view>
 </view>
 
