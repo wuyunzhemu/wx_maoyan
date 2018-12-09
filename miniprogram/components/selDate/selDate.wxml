@@ -1,0 +1,5 @@
+  <scroll-view  class="date-scroll"  scroll-x="true">
+      <block wx:for="{{pgDateArr}}" wx:key="index" wx:for-item="item">
+        <view bindtap='changeDate' data-index="{{index}}" class="date-item {{selIndex==index?'select':''}}">{{item}}</view>
+      </block>
+  </scroll-view>

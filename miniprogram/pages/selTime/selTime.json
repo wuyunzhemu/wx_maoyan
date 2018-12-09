@@ -1,4 +1,7 @@
 {
    "navigationBarTitleText": "影院",
-   "enablePullDownRefresh": false
+   "enablePullDownRefresh": false,
+   "usingComponents":{
+     "date": "../../components/selDate/selDate"
+   }
 }

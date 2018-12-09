@@ -10,7 +10,6 @@ Page({
     cnmList:[],
     hasMoreCinema:true,
     dateArr:[],
-    selIndex:0,
     pgDateArr:[],
     film:{},
     reqDate:''
@@ -70,16 +69,16 @@ Page({
     })
   },
 
-  changeDate(e){
-    let index = e.currentTarget.dataset.index;
-    console.log(index)
+  changeDate(e){  //修改日期
+    let index =e.detail.index;
     this.setData({
-      selIndex:index,
-      reqDate:this.data.dateArr[index],
-      cnmList:[]
+      reqDate: this.data.dateArr[index],
+      cnmList: []
     })
     this.getCinema();
   },
+
+
 
   toBuyTic:function(e){
     let cinema = JSON.stringify(e.detail.cinema);

@@ -1,7 +1,7 @@
 {
   "usingComponents":{
-    "cinema": "../../components/cinemaList/cinemaList"
-    
+    "cinema": "../../components/cinemaList/cinemaList",
+    "date":"../../components/selDate/selDate"
   },
   "enablePullDownRefresh": false
 }

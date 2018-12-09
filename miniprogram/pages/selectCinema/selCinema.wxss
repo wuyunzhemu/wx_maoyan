@@ -20,23 +20,3 @@
   overflow:hidden;
   white-space:nowrap;
 }
-
-.date-scroll{
-  width:100%;
-  border-bottom:1rpx solid #e4e4e4
-}
-
-.date-item{
-  display: inline-block;
-  height:90rpx;
-  width:200rpx;
-  line-height: 90rpx;
-  text-align: center;
-  font-size: 28rpx;
-}
-
-
-.select{
-  border-bottom: 4rpx solid #ef4238;
-  color:#ef4238;
-}

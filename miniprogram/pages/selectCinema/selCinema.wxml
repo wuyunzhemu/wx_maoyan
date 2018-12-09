@@ -1,9 +1,5 @@
  <view class="header-title">
-  <scroll-view class="date-scroll"  scroll-x="true">
-      <block wx:for="{{pgDateArr}}" wx:key="index" wx:for-item="item">
-        <view bindtap='changeDate' data-index="{{index}}" class="date-item {{selIndex==index?'select':''}}">{{item}}</view>
-      </block>
-  </scroll-view>
+  <date bindchangeDate="changeDate" pgDateArr="{{pgDateArr}}"></date>
 </view>
 <cinema bindtoBuyTic="toBuyTic" bindscrolltolower="onReachBottom" cinemaList="{{cnmList}}"></cinema>
 <view bindtap='getCinema' class="data_getMore {{hasMoreCinema?'':'hidden'}}">加载更多...</view>

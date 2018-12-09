@@ -29,7 +29,7 @@
     </view>
   </view>
   <view class="film-date">
-    
+    <date bindchangeDate="changeDate" pgDateArr="{{pgDateArrs[selIndex]}}" selDateIndex="{{selDateIndex}}"></date>
   </view>
 </view>
 
