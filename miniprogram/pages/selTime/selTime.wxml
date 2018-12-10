@@ -31,5 +31,26 @@
   <view class="film-date">
     <date bindchangeDate="changeDate" pgDateArr="{{pgDateArrs[selIndex]}}" selDateIndex="{{selDateIndex}}"></date>
   </view>
+  <view class="film-time-list">
+    <block wx:for="{{movies[selIndex].shows[selDateIndex].plist}}" wx:key="index" wx:for-item="item">
+      <view class='film-item'>
+        <view class="tict item-time">
+          <text class="time-start">{{item.tm}}</text>
+          <text class="ps time-over">{{item.overTime}}散场</text>
+        </view>
+        <view class="tict item-room">
+          <text class="film-type">{{item.lang}}{{item.tp}}</text>
+          <view class="ps film-room">{{item.th}}</view>
+        </view>
+        <view class="tict item-price">
+          <text class="film-price">{{item.sellPr}}<text class='price-unit'>元</text></text>
+          <text class="ps film-extra">{{item.extraDesc}}</text>
+        </view>
+        <view class="tict item-btn">
+          <Btn type="buyTic" text="购票"></Btn>
+        </view>
+      </view>
+    </block>
+  </view>
 </view>
 

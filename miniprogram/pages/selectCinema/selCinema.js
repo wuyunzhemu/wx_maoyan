@@ -92,15 +92,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setDate();
-    let film = JSON.parse(options.film)
+    this.setDate(); //得到往后七天的日期
+    let film = JSON.parse(options.film) //将传入的电影名称渲染到navigationbar
     wx.setNavigationBarTitle({
       title: film.nm
     })
     this.setData({
       film:film.id
     })
-    this.getCinema(this.data.dateArr[0]);
+    this.getCinema(this.data.dateArr[0]); //默认得到日期为今天的电影列表
   },
 
   /**

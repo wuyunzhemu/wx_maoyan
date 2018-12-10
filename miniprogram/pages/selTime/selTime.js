@@ -19,9 +19,6 @@ Page({
    */
   onLoad: function (options) {
     let cinema = JSON.parse(options.cinema);
-    console.log(cinema)
-    console.log(options.date)
-    console.log(options.movieId)
     let date = '';
     let movieId =0;
     this.setData({
@@ -42,34 +39,21 @@ Page({
         item.img = item.img.replace('/w.h/', '/')//得到正确图片路径
       })
 
+      result.map((movie)=>{  //得到结束时间以便于渲染到页面上
+        return movie.shows.map(item=>{
+          return item.plist.map(time=>{
+            time['overTime'] = this.getOverTime(time.tm,movie.dur)
+          })
+        })
+      })
+
    
     //-------------------------------------------------------------------------------------------------
-     //扒来的数据是YYYY-MM-DD格式，转换成页面显示的格式= =并用一个新数组接受，方便传递给组件，
-      let pgDateArrs = 
-      result.map((item)=>{     
+    
+      let pgDateArrs =  //得到页面显示的日期格式
+      result.map((item)=>{    
         return item.shows.map((film)=>{
-          let str = film.showDate.replace(/-/g, '/');
-          let dateObj = new Date(str);
-          let nowDate = new Date();
-          let pgDate ='';
-          if (dateObj.getDate() == nowDate.getDate()+1 && dateObj.getMonth()==nowDate.getMonth()) {  //优先级低的在前面
-            pgDate = '明天' + parseInt(dateObj.getMonth() + 1) + '月' + dateObj.getDate() + '日'
-          }
-
-          else if (dateObj.getDay() == 6) {
-            pgDate = '周六' + parseInt(dateObj.getMonth() + 1) + '月' + dateObj.getDate() + '日'
-          }
-          else if (dateObj.getDay() == 0) {
-            pgDate = '周日' + parseInt(dateObj.getMonth() + 1) + '月' + dateObj.getDate() + '日'
-          }
-
-          else if (dateObj.getDate() == nowDate.getDate() && dateObj.getMonth() == nowDate.getMonth()) {
-            pgDate = '今天' + parseInt(dateObj.getMonth() + 1) + '月' + dateObj.getDate() + '日'
-          }
-          else {
-            pgDate = dateObj.getMonth() + 1 + '月' + dateObj.getDate() + '日'
-          }
-          return pgDate;
+          return this.getShowDate(film.showDate)
         })
       })
      //-------------------------------------------------------------------------------------------
@@ -115,7 +99,51 @@ Page({
     this.setData({
       selDateIndex:e.detail.index
     })
-    console.log(this.data.selDateIndex)
+  },
+
+  getOverTime(startTime,dur){  //传入HH:MM格式时间和时长，计算出结束时间
+    let overHour = parseInt(startTime.split(':')[0]) + parseInt(dur / 60)
+    if (overHour >= 24) {
+      overHour = overHour - 24;
+    }
+    if (overHour <= 9) {
+      overHour = '0' + overHour;
+    }
+    let overMin = parseInt(startTime.split(':')[1]) + parseInt(dur % 60)
+    
+    if (overMin >= 60) {
+      overHour += parseInt(overMin / 60);
+      overMin = overMin % 60;
+    }
+    if (overMin <= 9) {
+      overMin = '0' + overMin;
+    }
+    return  overHour + ':' + overMin
+  },
+
+  getShowDate(date) { //扒来的数据是YYYY-MM-DD格式，转换成页面显示的格式
+    let str = date.replace(/-/g, '/');
+    let dateObj = new Date(str);
+    let nowDate = new Date();
+    let pgDate = '';
+    if (dateObj.getDate() == nowDate.getDate() + 1 && dateObj.getMonth() == nowDate.getMonth()) {  //优先级低的在前面
+      pgDate = '明天' + parseInt(dateObj.getMonth() + 1) + '月' + dateObj.getDate() + '日'
+    }
+
+    else if (dateObj.getDay() == 6) {
+      pgDate = '周六' + parseInt(dateObj.getMonth() + 1) + '月' + dateObj.getDate() + '日'
+    }
+    else if (dateObj.getDay() == 0) {
+      pgDate = '周日' + parseInt(dateObj.getMonth() + 1) + '月' + dateObj.getDate() + '日'
+    }
+
+    else if (dateObj.getDate() == nowDate.getDate() && dateObj.getMonth() == nowDate.getMonth()) {
+      pgDate = '今天' + parseInt(dateObj.getMonth() + 1) + '月' + dateObj.getDate() + '日'
+    }
+    else {
+      pgDate = dateObj.getMonth() + 1 + '月' + dateObj.getDate() + '日'
+    }
+    return pgDate;
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

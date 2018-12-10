@@ -1,11 +1,11 @@
 /* components/button/button.wxss */
 .button{
   width:90rpx;
-  height:40rpx;
-  border-radius: 5rpx;
+  height:50rpx;
+  border-radius: 7rpx;
   text-align: center;
-  padding-top:10rpx;
   color:white;
+  line-height: 50rpx;
 }
 
 .btn-buyTic{
@@ -20,4 +20,8 @@
 
 .normalBtn_font{
   font-size: 24rpx;
+}
+
+.btn-extraBuyTict{
+  background-color: #ffb400
 }

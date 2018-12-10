@@ -164,3 +164,75 @@ transition:all .2s ease-in 0s;
   color:#999999;
   font-size:24rpx;
 }
+
+.film-time-list{
+  padding-left:30rpx;
+  border-bottom:1rpx solid #d8d8d8;
+  box-sizing:border-box;
+}
+
+.film-item{
+  box-sizing:border-box;
+  height:120rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  border-bottom:1rpx solid #d8d8d8;
+}
+
+.tict{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: sub;
+  height:120rpx;
+}
+
+.tict span{
+  display: inline-block;
+}
+
+.price-unit{
+  font-size: 26rpx; 
+}
+
+.film-price{
+  color:#ef4238;
+  font-weight: 330;
+}
+
+.film-type{
+  font-size: 26rpx;
+}
+
+.film-room{
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis; 
+
+}
+
+.ps{
+  font-size: 22rpx;
+  color:#9a9a9a;
+}
+
+.item-time{
+ text-align: center;
+ margin-right:50rpx;
+ font-weight: 330;
+}
+.item-room{
+  width:200rpx;
+  margin-right:40rpx;
+}
+.item-price{
+  margin-right:35rpx;
+}
+.item-btn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  margin-right:30rpx;
+}
