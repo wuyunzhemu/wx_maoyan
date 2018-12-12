@@ -145,6 +145,14 @@ Page({
     }
     return pgDate;
   },
+
+  buyTict(e){//点击买票按钮
+    let film = e.currentTarget.dataset.item;
+    console.log(film);
+    wx.navigateTo({
+      url: '../selSeats/selSeats?seqno='+film.seqNo,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

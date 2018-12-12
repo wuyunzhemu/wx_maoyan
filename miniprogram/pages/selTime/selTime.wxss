@@ -198,6 +198,7 @@ transition:all .2s ease-in 0s;
 
 .film-price{
   color:#ef4238;
+  
   font-weight: 330;
 }
 
@@ -218,6 +219,7 @@ transition:all .2s ease-in 0s;
 }
 
 .item-time{
+  width:120rpx;
  text-align: center;
  margin-right:50rpx;
  font-weight: 330;
@@ -227,7 +229,8 @@ transition:all .2s ease-in 0s;
   margin-right:40rpx;
 }
 .item-price{
-  margin-right:35rpx;
+  margin-right:20rpx;
+  width:200rpx;
 }
 .item-btn{
   display: flex;

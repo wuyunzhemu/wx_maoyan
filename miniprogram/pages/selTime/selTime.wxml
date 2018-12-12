@@ -47,7 +47,7 @@
           <text class="ps film-extra">{{item.extraDesc}}</text>
         </view>
         <view class="tict item-btn">
-          <Btn type="buyTic" text="购票"></Btn>
+          <Btn bindtap="buyTict" data-item="{{item}}" type="buyTic" text="购票"></Btn>
         </view>
       </view>
     </block>

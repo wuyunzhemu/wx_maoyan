@@ -3,9 +3,10 @@
   width:90rpx;
   height:50rpx;
   border-radius: 7rpx;
-  text-align: center;
   color:white;
-  line-height: 50rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn-buyTic{
