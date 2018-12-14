@@ -126,8 +126,12 @@ Page({
     let dateObj = new Date(str);
     let nowDate = new Date();
     let pgDate = '';
-    if (dateObj.getDate() == nowDate.getDate() + 1 && dateObj.getMonth() == nowDate.getMonth()) {  //优先级低的在前面
-      pgDate = '明天' + parseInt(dateObj.getMonth() + 1) + '月' + dateObj.getDate() + '日'
+
+    if (dateObj.getDate() == nowDate.getDate() && dateObj.getMonth() == nowDate.getMonth()) {
+      pgDate = '今天' + parseInt(dateObj.getMonth() + 1) + '月' + dateObj.getDate() + '日'
+    }
+    else if (dateObj.getDay() == 5) {
+      pgDate = '周五' + parseInt(dateObj.getMonth() + 1) + '月' + dateObj.getDate() + '日'
     }
 
     else if (dateObj.getDay() == 6) {
@@ -137,8 +141,12 @@ Page({
       pgDate = '周日' + parseInt(dateObj.getMonth() + 1) + '月' + dateObj.getDate() + '日'
     }
 
-    else if (dateObj.getDate() == nowDate.getDate() && dateObj.getMonth() == nowDate.getMonth()) {
-      pgDate = '今天' + parseInt(dateObj.getMonth() + 1) + '月' + dateObj.getDate() + '日'
+    else if (dateObj.getDate() == nowDate.getDate() + 1 && dateObj.getMonth() == nowDate.getMonth()) {
+      pgDate = '明天' + parseInt(dateObj.getMonth() + 1) + '月' + dateObj.getDate() + '日'
+    }
+
+    else if (dateObj.getDate() == nowDate.getDate() + 2 && dateObj.getMonth() == nowDate.getMonth()) {
+      pgDate = '后天' + parseInt(dateObj.getMonth() + 1) + '月' + dateObj.getDate() + '日'
     }
     else {
       pgDate = dateObj.getMonth() + 1 + '月' + dateObj.getDate() + '日'
@@ -147,10 +155,12 @@ Page({
   },
 
   buyTict(e){//点击买票按钮
-    let film = e.currentTarget.dataset.item;
-    console.log(film);
+    let timeInfo = JSON.stringify(e.currentTarget.dataset.item);
+    let filmInfo = JSON.stringify(this.data.movies[this.data.selIndex]);
+    let cinema = JSON.stringify(this.data.cinema);
+    let cinemas = 
     wx.navigateTo({
-      url: '../selSeats/selSeats?seqno='+film.seqNo,
+      url: '../selSeats/selSeats?timeInfo='+timeInfo+'&filmInfo='+filmInfo+'&cinema='+cinema,
     })
   },
   /**

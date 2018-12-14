@@ -1,1 +1,44 @@
-/* miniprogram/pages/selSeats/selSeats.wxss */
+.header{
+
+  padding-left:35rpx;
+  padding-right: 35rpx;
+  border-bottom: 1rpx solid #dddddd;
+}
+
+.hd-info{
+   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height:120rpx;
+  border-bottom:1rpx solid #dddddd;
+}
+
+.hd-timeInfo{
+  font-size: 24rpx;
+  color:#9b9b9b;
+}
+
+.hd-reminders{
+  height:90rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.hd-reminder image{
+  height:35rpx;
+  width:35rpx;
+  vertical-align: middle;
+}
+
+.hd-reminder{
+  margin-right:40rpx;
+}
+
+.hd-reminder text{
+  font-size: 26rpx;
+  margin-left:10rpx;
+}

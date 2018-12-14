@@ -1,2 +1,11 @@
-<!--miniprogram/pages/selSeats/selSeats.wxml-->
-<text>miniprogram/pages/selSeats/selSeats.wxml</text>
+<view class="header">
+  <view class="hd-info">
+    <text class="hd-cnmInfo">{{cinema.nm}}</text>
+    <text class="hd-timeInfo">{{pgDate}} {{time.tm}} {{time.lang}}</text>
+  </view>
+  <view class="hd-reminders">
+    <view class="hd-reminder"><image src="../../images/seat-empt.png"/><text>可选</text></view>
+    <view class="hd-reminder"><image src="../../images/seat-disable.png"/><text>不可选</text></view>
+    <view class="hd-reminder"><image src="../../images/seat-select.png"/><text>已选</text></view>
+  </view>
+</view>
