@@ -9,6 +9,9 @@ Page({
     time:{},
     cinema:{},
     pgDate:'',
+    seatsScale:0,
+    seatScrollLeft: 0,
+    seatScrollTop: 0,
     seats:[
       [{ type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 },],
       [{ type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 },],
@@ -28,10 +31,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let time = JSON.parse(options.timeInfo);
-    let film = JSON.parse(options.filmInfo)
-    let cinema =JSON.parse(options.cinema);
-    let pgDate = this.getShowDate(time.dt);
+    this.setData({
+      seatsScale: 2,
+    })
+    // let time = JSON.parse(options.timeInfo);
+    // let film = JSON.parse(options.filmInfo)
+    // let cinema =JSON.parse(options.cinema);
+    // let pgDate = this.getShowDate(time.dt);
     let seats = this.data.seats;
     seats.map(row=>{
       return row.map(seat=>{
@@ -39,12 +45,13 @@ Page({
       })
     })
     this.setData({
-      film:film,
-      time:time,
-      cinema:cinema,
-      pgDate:pgDate,
-      seats:seats
+      // film:film,
+      // time:time,
+      // cinema:cinema,
+      // pgDate:pgDate,
+      seats:seats,
     })
+
   },
 
 
@@ -96,10 +103,18 @@ Page({
     let src = `../../images/seat-${type}-${status}.png`;
     return src;
   },
+
+  setSeatView(){ //在放大座位区域后选中中间部分
+    this.setData({
+      seatScrollLeft: 320,
+      seatScrollTop: 100
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+   
 
   },
 
@@ -107,8 +122,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+  
 
   },
+
 
   /**
    * 生命周期函数--监听页面隐藏
