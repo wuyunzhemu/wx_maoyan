@@ -4,8 +4,22 @@
     <text class="hd-timeInfo">{{pgDate}} {{time.tm}} {{time.lang}}</text>
   </view>
   <view class="hd-reminders">
-    <view class="hd-reminder"><image src="../../images/seat-empt.png"/><text>可选</text></view>
-    <view class="hd-reminder"><image src="../../images/seat-disable.png"/><text>不可选</text></view>
-    <view class="hd-reminder"><image src="../../images/seat-select.png"/><text>已选</text></view>
+    <view class="hd-reminder"><image src="../../images/seat-normal-empt.png"/><text>可选</text></view>
+    <view class="hd-reminder"><image src="../../images/seat-normal-disable.png"/><text>不可选</text></view>
+    <view class="hd-reminder"><image src="../../images/seat-normal-select.png"/><text>已选</text></view>
+  </view>
+</view>
+<view class="body">
+  <view class="seats-scroll">
+    <view class="bd-seats-scroll">
+    <view class="seats-room">{{time.th}}</view>
+      <view class="bd-seatlist">
+        <view class="bd-seats" wx:for ="{{seats}}" wx:key="rowIndex" wx:for-index="rowIndex" wx:for-item="row">
+          <block wx:for="{{seats[rowIndex]}}" wx:key="colIndex" wx:for-index="colIndex" wx:for-item="seat">
+            <image mode="aspectFit" src="{{seat.src}}"/>
+          </block>
+        </view>
+      </view>
+    </view>
   </view>
 </view>

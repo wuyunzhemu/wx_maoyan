@@ -5,7 +5,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    film:{},
+    time:{},
+    cinema:{},
+    pgDate:'',
+    seats:[
+      [{ type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 },],
+      [{ type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 },],
+      [],
+      [{ type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }],
+      [{ type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }],
+      [{ type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }],
+      [{ type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }],
+      [{ type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }],
+      [{ type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }],
+      [{ type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }],
+      [{ type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }],
+    ]
   },
 
   /**
@@ -16,11 +32,18 @@ Page({
     let film = JSON.parse(options.filmInfo)
     let cinema =JSON.parse(options.cinema);
     let pgDate = this.getShowDate(time.dt);
+    let seats = this.data.seats;
+    seats.map(row=>{
+      return row.map(seat=>{
+        seat['src'] = this.getSeatImgSrc(seat);
+      })
+    })
     this.setData({
       film:film,
       time:time,
       cinema:cinema,
-      pgDate:pgDate
+      pgDate:pgDate,
+      seats:seats
     })
   },
 
@@ -56,6 +79,22 @@ Page({
       pgDate = dateObj.getMonth() + 1 + '月' + dateObj.getDate() + '日'
     }
     return pgDate;
+  },
+
+  getSeatImgSrc(seat){  //得到相应座位的图片路径
+    let type='normal';
+    let status='empt'
+    if(seat.type=='double'){
+      type='double'
+    }
+    if(seat.status==1){
+      status='select'
+    }
+    if(seat.status==-1){
+      status='disable'
+    }
+    let src = `../../images/seat-${type}-${status}.png`;
+    return src;
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
