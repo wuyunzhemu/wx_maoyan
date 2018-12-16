@@ -14,7 +14,7 @@
     <view class="seats-room">1号厅
     </view>
     
-    <scroll-view style="height:850rpx" scroll-left="{{seatScrollLeft}}" scroll-top="{{seatScrollTop}}"  scroll-x="true" scroll-y="true">
+    <scroll-view scroll-left="{{seatScrollLeft}}" scroll-top="{{seatScrollTop}}"  scroll-x="true" scroll-y="true">
       <view  class="bd-seatlist" bindtransitionend="setSeatView" style=" transform: scale({{seatsScale}});">
       <view class="center-reminder">银幕中央</view>
       <view class="center-dashed"></view>
@@ -25,6 +25,7 @@
           </block>
         </view>
         </view>
+        <image class="logo" src ="../../images/cat-logo.png"/>
       </view>
     </scroll-view>
   </view>

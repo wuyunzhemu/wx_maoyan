@@ -44,8 +44,8 @@
 }
 
 .seats-scroll{
-  height:850rpx;
-  overflow: hidden;
+  height:750rpx;
+  overflow: scroll;
 }
 
 
@@ -68,7 +68,7 @@
 }
 
 .bd-seats{
-  height:30rpx;
+  height:20rpx;
   width:100%;
   display: flex;
   flex-direction: row;
@@ -77,9 +77,8 @@
 
 .bd-seats image{
   margin-right: 5rpx;
-  margin-top:7rpx;
-  height:22rpx;
-  width:22rpx;
+  height:20rpx;
+  width:20rpx;
   display: inline-block;
 }
 
@@ -88,7 +87,7 @@
 .seats-room{
   position: absolute;
   top:225rpx;
-  left:230rpx;
+  left:260rpx;
   display: inline-block;
   color: black;
   font-size: 20rpx;
@@ -101,6 +100,7 @@
 }
 
 .center-reminder{
+  margin-bottom: 10rpx;
   width:70rpx;
   height:20rpx;
   background-color: rgba(170,170,170,0.2);
@@ -111,17 +111,25 @@
   line-height: 20rpx;
 }
 
-.center-dashed{
-  position: relative;
+.bd-seatsarea::before{
   width:1rpx;
   box-sizing: border-box;
-  height:360rpx;
+  height:100%;
   border-left: 1rpx dashed rgba(170,170,170,0.3);
   display: inline-block;
 }
 
 .bd-seatsarea{
-  margin-top: -350rpx;
-  display: inline-block;
-  width:506rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.logo{
+  margin-top:20rpx;
+  width:30rpx;
+  height:30rpx;
+  opacity: 0.7;
 }
