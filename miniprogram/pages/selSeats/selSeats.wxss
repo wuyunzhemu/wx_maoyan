@@ -63,8 +63,8 @@
   align-items: center;
   justify-content: flex-start;
   background:#f0f0f0;
-  transition: all .6s;
-  transform-origin: left top;
+  transition: all .8s;
+  transform-origin: left top; 
 }
 
 .bd-seats{
@@ -124,12 +124,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  position: relative;
+  padding-top:5rpx;
+  padding-bottom: 8rpx;
 }
 
 .logo{
-  margin-top:20rpx;
+  margin-top:10rpx;
   width:30rpx;
   height:30rpx;
   opacity: 0.7;
+}
+
+.center-dashed{
+  width:1rpx;
+  border-left: 1rpx dashed #ddd;
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:50%;
 }

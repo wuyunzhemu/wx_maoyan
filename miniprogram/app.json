@@ -1,13 +1,16 @@
 {
   "cloud": true,
   "pages": [
-        "pages/selSeats/selSeats",
+    "pages/selSeats/selSeats",
+    "pages/selTime/selTime",
     "pages/index/index",
+    
+    
     "pages/cinema/cinema",
     "pages/hotFilmInfo/hotFilmInfo",
     "pages/mine/mine",
-    "pages/selectCinema/selCinema",
-    "pages/selTime/selTime"
+    "pages/selectCinema/selCinema"
+    
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

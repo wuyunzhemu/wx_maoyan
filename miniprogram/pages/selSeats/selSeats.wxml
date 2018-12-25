@@ -15,13 +15,14 @@
     </view>
     
     <scroll-view scroll-left="{{seatScrollLeft}}" scroll-top="{{seatScrollTop}}"  scroll-x="true" scroll-y="true">
-      <view  class="bd-seatlist" bindtransitionend="setSeatView" style=" transform: scale({{seatsScale}});">
+      <view  class="bd-seatlist" bindtransitionend="setSeatView" style=" transform: scale({{seatsScale}}) ">
       <view class="center-reminder">银幕中央</view>
-      <view class="center-dashed"></view>
+      
       <view class="bd-seatsarea">
+      <view class="center-dashed"></view>
         <view class="bd-seats" wx:for ="{{seats}}" wx:key="rowIndex" wx:for-index="rowIndex" wx:for-item="row">
           <block wx:for="{{seats[rowIndex]}}" wx:key="colIndex" wx:for-index="colIndex" wx:for-item="seat">
-            <image id="{{rowIndex+''+colIndex}}" mode="aspectFit" src="{{seat.src}}"/>
+            <image data-seat="{{seat}}" data-row="{{seats[rowIndex]}}" data-column="{{seats}}" bindtap="selSeat" data-rowIndex="{{rowIndex}}" data-colindex="{{colIndex}}" mode="aspectFit" src="{{seat.src}}"/>
           </block>
         </view>
         </view>

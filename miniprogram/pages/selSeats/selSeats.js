@@ -9,11 +9,11 @@ Page({
     time:{},
     cinema:{},
     pgDate:'',
-    seatsScale:0,
+    seatScale:false,
     seatScrollLeft: 0,
     seatScrollTop: 0,
     seats:[
-      [{ type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }],
+      [{ type: 'normal', status: -1 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }],
       [{ type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }],
       [],
       [{ type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }],
@@ -31,13 +31,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      seatsScale: 2,
-    })
-    // let time = JSON.parse(options.timeInfo);
-    // let film = JSON.parse(options.filmInfo)
-    // let cinema =JSON.parse(options.cinema);
-    // let pgDate = this.getShowDate(time.dt);
+  
+    //  let time = JSON.parse(options.timeInfo);
+    //  let film = JSON.parse(options.filmInfo)
+    //  let cinema =JSON.parse(options.cinema);
+    //  let pgDate = this.getShowDate(time.dt);
     let seats = this.data.seats;
     seats.map(row=>{
       return row.map(seat=>{
@@ -45,13 +43,13 @@ Page({
       })
     })
     this.setData({
-      // film:film,
-      // time:time,
-      // cinema:cinema,
-      // pgDate:pgDate,
+      //  film:film,
+      //  time:time,
+      //  cinema:cinema,
+      //  pgDate:pgDate,
       seats:seats,
+      
     })
-
   },
 
 
@@ -88,7 +86,7 @@ Page({
     return pgDate;
   },
 
-  getSeatImgSrc(seat){  //得到相应座位的图片路径
+  getSeatImgSrc(seat){  //得到状态相应座位的图片路径
     let type='normal';
     let status='empt'
     if(seat.type=='double'){
@@ -110,6 +108,35 @@ Page({
       seatScrollTop: 150
     })
   },
+
+  selSeat(e){//选座
+    console.log(e);
+    let rowIndex=e.currentTarget.dataset.rowindex;
+    let colindex=e.currentTarget.dataset.colindex
+    let seat = e.currentTarget.dataset.seat;
+    if(seat.status == -1) 
+    {
+      wx.showToast({
+        title: '座位上有人了~',
+        icon:'none'
+      })
+      return;
+    }
+    else if(seat.status == 0)
+    {
+      console.log('选择位置')
+      seat.status = 1
+    }
+    else if(seat.status == 1){
+      console.log('取消选择')
+      seat.status = 0
+    }
+    seat.src = this.getSeatImgSrc(seat)
+    let selSeat = 'seats['+rowIndex+']['+colindex+']'
+    this.setData({
+      [selSeat]:seat
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -122,7 +149,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.setData({
+      seatsScale:  2,
+    })
 
   },
 
