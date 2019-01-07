@@ -80,6 +80,7 @@ Page({
     //获取城市信息
     wx.getLocation({
       success: res => {
+        console.log(res)
         let lat = res.latitude,
         lnt = res.longitude
         qqmap.reverseGeocoder({

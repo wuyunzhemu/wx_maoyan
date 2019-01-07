@@ -11,10 +11,13 @@
 </view>
 <view class="body">
   <view class="seats-scroll">
-    <view class="seats-room">1号厅
-    </view>
-    
-    <scroll-view scroll-left="{{seatScrollLeft}}" scroll-top="{{seatScrollTop}}"  scroll-x="true" scroll-y="true">
+    <view class="seats-room" style="left:{{seatsArea.roomTitleMove}}rpx">1号厅</view>
+    <view class="seats-row">
+      <block wx:for="{{seatsArea.seatsRow}}" wx:key="index" >
+        <text class="seats-rowNum">{{item==0?'':item}}</text>
+      </block>
+    </view>    
+    <scroll-view bindscroll="moveBar" scroll-left="{{seatsArea.seatScrollLeft}}" scroll-top="{{seatsArea.seatScrollTop}}"  scroll-x="true" scroll-y="true">
       <view  class="bd-seatlist" bindtransitionend="setSeatView" style=" transform: scale({{seatsScale}}) ">
       <view class="center-reminder">银幕中央</view>
       

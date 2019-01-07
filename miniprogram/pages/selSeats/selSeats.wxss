@@ -45,7 +45,6 @@
 
 .seats-scroll{
   height:750rpx;
-  overflow: scroll;
 }
 
 
@@ -87,7 +86,6 @@
 .seats-room{
   position: absolute;
   top:225rpx;
-  left:260rpx;
   display: inline-block;
   color: black;
   font-size: 20rpx;
@@ -143,4 +141,24 @@
   top:0;
   bottom:0;
   left:50%;
+}
+.seats-row{
+  background: rgba(0,0,0,0.12);
+  position: absolute;
+  top:382rpx;
+  left:32rpx;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-top:24rpx;
+  padding-bottom: 24rpx;
+  border-radius: 12rpx;
+}
+.seats-rowNum{
+  height:40rpx;
+  font-size: 32rpx;
+  font-display: block;
+  color:white;
 }

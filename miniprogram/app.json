@@ -2,10 +2,8 @@
   "cloud": true,
   "pages": [
     "pages/selSeats/selSeats",
-    "pages/selTime/selTime",
     "pages/index/index",
-    
-    
+    "pages/selTime/selTime",
     "pages/cinema/cinema",
     "pages/hotFilmInfo/hotFilmInfo",
     "pages/mine/mine",

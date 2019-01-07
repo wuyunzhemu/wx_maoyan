@@ -9,9 +9,16 @@ Page({
     time:{},
     cinema:{},
     pgDate:'',
-    seatScale:false,
-    seatScrollLeft: 0,
-    seatScrollTop: 0,
+    seatsArea:{
+      seatsRow: [],
+      seatScale: false,
+      seatScrollLeft: 0,
+      seatScrollTop: 0,
+      roomTitleMove: 260,
+      xMove: 320,
+      yMove:0,
+    },
+    
     seats:[
       [{ type: 'normal', status: -1 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }],
       [{ type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }, { type: 'normal', status: 0 }],
@@ -42,13 +49,14 @@ Page({
         seat['src'] = this.getSeatImgSrc(seat);
       })
     })
+    let seatsRow = this.getSeatsRow(seats);
     this.setData({
       //  film:film,
       //  time:time,
       //  cinema:cinema,
       //  pgDate:pgDate,
       seats:seats,
-      
+      'seatsArea.seatsRow':seatsRow
     })
   },
 
@@ -104,8 +112,8 @@ Page({
 
   setSeatView(){ //在放大座位区域后选中中间部分
     this.setData({
-      seatScrollLeft: 320,
-      seatScrollTop: 150
+      'seatsArea.seatScrollLeft': 320,
+      'seatsArea.seatScrollTop': 150,
     })
   },
 
@@ -135,6 +143,31 @@ Page({
     let selSeat = 'seats['+rowIndex+']['+colindex+']'
     this.setData({
       [selSeat]:seat
+    })
+  },
+
+  getSeatsRow(arr){
+    let seatsRow = [],
+       rowIndex = 0; //行数
+    for(let i=0;i<arr.length;i++){
+      rowIndex++;
+      if(arr[i].length ==0){
+        rowIndex--;
+        seatsRow[i] = 0;
+        continue;
+      }
+      seatsRow[i] = rowIndex;
+    }
+    return seatsRow;
+  },
+
+  moveBar(e){
+    console.log(e.detail);
+    let x = e.detail.scrollLeft - this.data.seatsArea.xMove ;
+    let y = e.detail.seatScrollTop - this.data.seatsArea.yMove;
+    this.setData({
+      'seatsArea.roomTitleMove': this.data.seatsArea.roomTitleMove - x,
+      'seatsArea.xMove':e.detail.scrollLeft,
     })
   },
   /**
